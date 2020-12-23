@@ -11,4 +11,5 @@ struct TestStrings {
     static let name = "yumi kato"
     static let server = "faerie"
     static let region = "na"
+    static let charID = 29829350
 }

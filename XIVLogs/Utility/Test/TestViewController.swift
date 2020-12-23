@@ -34,15 +34,14 @@ class TestViewController: UIViewController {
             case .failure(let error):
                 print(error, error.localizedDescription)
             }
-            // print(self.encounters[0].characterID)
-            let characterID = self.encounters[0].characterID
-            CharacterController.fetchCharacter(with: characterID) { (result) in
-                switch result {
-                case .success(let character):
-                    self.character = character
-                case .failure(let error):
-                    print(error, error.localizedDescription)
-                }
+            print(self.encounters[0].characterID)
+        }
+        CharacterController.fetchCharacter(with: TestStrings.charID) { (result) in
+            switch result {
+            case .success(let character):
+                self.character = character
+            case .failure(let error):
+                print(error, error.localizedDescription)
             }
         }
     }

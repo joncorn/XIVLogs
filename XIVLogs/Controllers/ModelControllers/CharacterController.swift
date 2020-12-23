@@ -23,8 +23,11 @@ class CharacterController {
         let stringID = String(characterID)
         guard let baseURL = baseURL else {return completion(.failure(.invalidURL))}
         let characterURL = baseURL.appendingPathComponent(characterPathComponent)
-        let finalURL = characterURL.appendingPathComponent(stringID)
-        print(finalURL)
+        let idURL = characterURL.appendingPathComponent(stringID)
+        var components = URLComponents(url: idURL, resolvingAgainstBaseURL: true)
+        let APIQuery = URLQueryItem(name: apiKeyQueryName, value: apiKeyQueryValue)
+        components?.queryItems = [APIQuery]
+        guard let finalURL = components?.url else {return completion(.failure(.invalidURL))}
         URLSession.shared.dataTask(with: finalURL) { (data, _, error) in
             if let error = error {
                 print(error, error.localizedDescription)
