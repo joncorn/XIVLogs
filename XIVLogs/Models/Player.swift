@@ -8,5 +8,14 @@
 import Foundation
 
 struct Player {
-    
+    let encounterName: String
+    let spec: String
+    let rank: Int
+    let outOf: Int
+    let difficulty: Int
+    let characterID: Int
+    let characterName: String
+    let server: String
+    let percentile: Int
+    let ilvlKeyOrPatch: Double
 }
