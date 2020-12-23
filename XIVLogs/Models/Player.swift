@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Player {
+struct Player: Decodable {
     let encounterName: String
     let spec: String
     let rank: Int
