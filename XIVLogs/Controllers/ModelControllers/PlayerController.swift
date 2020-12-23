@@ -19,9 +19,11 @@ class PlayerController {
         let charSearchURL = characterURL.appendingPathComponent(searchTerm.lowercased())
         let serverURL = charSearchURL.appendingPathComponent(server.lowercased())
         let regionURL = serverURL.appendingPathComponent(region.lowercased())
+        
         // API key query
         var components = URLComponents(url: regionURL, resolvingAgainstBaseURL: true)
         let apiQuery = URLQueryItem(name: StringHelpers.apiKeyQueryName, value: StringHelpers.apiKeyQueryValue)
+        
         // Appends apikey query to end of url
         components?.queryItems = [apiQuery]
         guard let finalURL = components?.url else {return completion(.failure(.invalidURL))}
