@@ -1,13 +1,13 @@
 //
-//  StringHelpers.swift
+//  FFLogsStrings.swift
 //  XIVLogs
 //
-//  Created by Jon Corn on 12/22/20.
+//  Created by Jon Corn on 12/23/20.
 //
 
 import Foundation
 
-struct StringHelpers {
+struct FFLogsStrings {
     // API Key
     static let apiKeyQueryName = "api_key"
     static let apiKeyQueryValue = "f0c9d89d280c4b67bd3c8af2b5c252be"

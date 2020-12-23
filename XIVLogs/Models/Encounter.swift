@@ -1,13 +1,13 @@
 //
-//  Player.swift
+//  Encounter.swift
 //  XIVLogs
 //
-//  Created by Jon Corn on 12/22/20.
+//  Created by Jon Corn on 12/23/20.
 //
 
 import Foundation
 
-struct Player: Decodable {
+struct Encounter: Decodable {
     let encounterName: String
     let spec: String
     let rank: Int
@@ -16,6 +16,6 @@ struct Player: Decodable {
     let characterID: Int
     let characterName: String
     let server: String
-    let percentile: Int
+    let percentile: Double
     let ilvlKeyOrPatch: Double
 }

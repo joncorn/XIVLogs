@@ -1,13 +1,13 @@
 //
-//  PlayerError.swift
+//  EncounterError.swift
 //  XIVLogs
 //
-//  Created by Jon Corn on 12/22/20.
+//  Created by Jon Corn on 12/23/20.
 //
 
 import Foundation
 
-enum PlayerError: LocalizedError {
+enum EncounterError: LocalizedError {
     case invalidURL
     case thrownError(Error)
     case noData
