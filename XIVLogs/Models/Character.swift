@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct TopLevelDictionary {
+struct TopLevelDictionary: Decodable {
     let character: Character
     
-    struct Character {
+    struct Character: Decodable {
         let avatar: URL
         let name: String
         let server: String
