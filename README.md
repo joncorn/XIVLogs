@@ -1,0 +1,2 @@
+# XIVLogs
+Reference combat logs
