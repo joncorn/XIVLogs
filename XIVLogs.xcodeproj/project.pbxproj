@@ -22,6 +22,8 @@
 		6DBAF1C225936D290049AB53 /* CharacterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF1C125936D290049AB53 /* CharacterController.swift */; };
 		6DBAF1C625936EDB0049AB53 /* CharacterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF1C525936EDB0049AB53 /* CharacterError.swift */; };
 		6DBAF1CB25936EEC0049AB53 /* XIVapiStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF1CA25936EEC0049AB53 /* XIVapiStrings.swift */; };
+		6DBAF1D22594B8140049AB53 /* ParseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF1D12594B8140049AB53 /* ParseTableViewCell.swift */; };
+		6DBAF1D52594BE300049AB53 /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF1D42594BE300049AB53 /* TestTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		6DBAF1C125936D290049AB53 /* CharacterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterController.swift; sourceTree = "<group>"; };
 		6DBAF1C525936EDB0049AB53 /* CharacterError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterError.swift; sourceTree = "<group>"; };
 		6DBAF1CA25936EEC0049AB53 /* XIVapiStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIVapiStrings.swift; sourceTree = "<group>"; };
+		6DBAF1D12594B8140049AB53 /* ParseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ParseTableViewCell.swift; path = ../../../../../Documents/ParseTableViewCell.swift; sourceTree = "<group>"; };
+		6DBAF1D42594BE300049AB53 /* TestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +166,8 @@
 			children = (
 				6DBAF1B1259365E30049AB53 /* TestStrings.swift */,
 				6DBAF1B9259367190049AB53 /* TestViewController.swift */,
+				6DBAF1D12594B8140049AB53 /* ParseTableViewCell.swift */,
+				6DBAF1D42594BE300049AB53 /* TestTableViewController.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -241,8 +247,10 @@
 				6DBAF1B2259365E30049AB53 /* TestStrings.swift in Sources */,
 				6DBAF1C225936D290049AB53 /* CharacterController.swift in Sources */,
 				6DBAF1BA259367190049AB53 /* TestViewController.swift in Sources */,
+				6DBAF1D52594BE300049AB53 /* TestTableViewController.swift in Sources */,
 				6DBAF1AF259363B70049AB53 /* FFLogsStrings.swift in Sources */,
 				6DBAF1C625936EDB0049AB53 /* CharacterError.swift in Sources */,
+				6DBAF1D22594B8140049AB53 /* ParseTableViewCell.swift in Sources */,
 				6DBAF1A42593624C0049AB53 /* Encounter.swift in Sources */,
 				6DBAF187259361B10049AB53 /* SceneDelegate.swift in Sources */,
 				6DBAF1CB25936EEC0049AB53 /* XIVapiStrings.swift in Sources */,

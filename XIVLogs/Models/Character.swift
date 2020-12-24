@@ -10,6 +10,10 @@ import Foundation
 struct TopLevelDictionary: Decodable {
     let character: Character
     
+    enum CodingKeys: String, CodingKey {
+        case character = "Character"
+    }
+    
     struct Character: Decodable {
         let avatar: URL
         let name: String
