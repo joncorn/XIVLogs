@@ -13,6 +13,11 @@ class EncounterController {
     // API Key
     fileprivate static let apiKeyQueryName = "api_key"
     fileprivate static let apiKeyQueryValue = "f0c9d89d280c4b67bd3c8af2b5c252be"
+    // Query
+    fileprivate static let metricQueryName = "metric"
+    fileprivate static let metricQueryValue = "dps"
+    fileprivate static let timeFrameQueryName = "timeframe"
+    fileprivate static let timeFrameQueryValue = "historical"
     // URL
     fileprivate static let baseURL = URL(string: "https://www.fflogs.com:443/v1")
     fileprivate static let parsesPathComponent = "parses"
@@ -31,10 +36,12 @@ class EncounterController {
         
         // API key query
         var components = URLComponents(url: regionURL, resolvingAgainstBaseURL: true)
+        let metricQuery = URLQueryItem(name: FFLogsStrings.metricQueryName, value: FFLogsStrings.metricQueryValue)
+        let timeFrameQuery = URLQueryItem(name: FFLogsStrings.timeFrameQueryName, value: FFLogsStrings.timeFrameQueryValue)
         let apiQuery = URLQueryItem(name: FFLogsStrings.apiKeyQueryName, value: FFLogsStrings.apiKeyQueryValue)
         
         // Appends apikey query to end of url
-        components?.queryItems = [apiQuery]
+        components?.queryItems = [metricQuery, timeFrameQuery, apiQuery]
         guard let finalURL = components?.url else {return completion(.failure(.invalidURL))}
         
         // DataTask

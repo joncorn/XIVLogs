@@ -9,6 +9,8 @@ import UIKit
 
 class TestTableViewController: UITableViewController {
     
+    var characterID: Int?
+    
     var encounters = [Encounter]() {
         didSet {
             DispatchQueue.main.async {
@@ -18,7 +20,7 @@ class TestTableViewController: UITableViewController {
     }
     
     // Cloud of Darkness: Savage encounters
-    var cloudOfDarkness = [Encounter]() {
+    var cloudOfDarkness: Encounter? {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -45,27 +47,51 @@ class TestTableViewController: UITableViewController {
         return encounters.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "encounterCell", for: indexPath)
 
         let encounter = encounters[indexPath.row]
+        let parseAsInt = Int(encounter.percentile)
         
         cell.textLabel?.text = encounter.encounterName
-        cell.detailTextLabel?.text = String(format: "%.0f", encounter.percentile)
+        cell.detailTextLabel?.text = String(parseAsInt)
+        
+        let ep = parseAsInt
+        
+        
+        if ep <= 24 {
+            cell.detailTextLabel?.textColor = .gray
+        } else if ep <= 49 {
+            cell.detailTextLabel?.textColor = .green
+        } else if ep <= 74 {
+            cell.detailTextLabel?.textColor = .blue
+        } else if ep <= 94 {
+            cell.detailTextLabel?.textColor = .purple
+        } else if ep <= 98 {
+            cell.detailTextLabel?.textColor = .orange
+        } else if ep <= 99 {
+            cell.detailTextLabel?.textColor = .systemPink
+        } else if ep <= 100 {
+            cell.detailTextLabel?.textColor = .yellow
+        }
 
         return cell
     }
     
     //  MARK: - Methods
     func fetchData() {
-        EncounterController.fetchEncounter(with: "mr whitekeys", server: TestStrings.server, region: TestStrings.region) { (result) in
+        // resets encounters array to empty before performing fetch
+        encounters = []
+        
+        EncounterController.fetchEncounter(with: "kazu mi", server: "faerie", region: "na") { (result) in
             switch result {
             case .success(let encounters):
-                // for each object in array, only append savage difficult objects
+                // for each object in array, only append highest parse of selected fight
                 for e in encounters {
-                    if e.difficulty == 101 && e.encounterName == "Cloud of Darkness" {
+                    if e.difficulty == 101 {
+//                    if e.difficulty == 101 && e.encounterName == "Cloud of Darkness" && e.percentile >= encounters[0].percentile {
                         self.encounters.append(e)
+                        self.characterID = e.characterID
                     }
                 }
             case .failure(let error):
