@@ -15,9 +15,16 @@ class EncounterController {
     fileprivate static let apiKeyQueryValue = "f0c9d89d280c4b67bd3c8af2b5c252be"
     // Query
     fileprivate static let metricQueryName = "metric"
-    fileprivate static let metricQueryValue = "dps"
+    fileprivate static let metricQueryValue = "rdps"
     fileprivate static let timeFrameQueryName = "timeframe"
     fileprivate static let timeFrameQueryValue = "historical"
+    fileprivate static let zoneQueryName = "zone"
+    fileprivate static let zoneEdensPromiseQueryValue = "38"
+    fileprivate static let zoneTrialsIIIQueryValue = "37"
+    fileprivate static let zoneTrialsIIQueryValue = "34"
+    fileprivate static let zonePuppetsBunkerQueryValue = "35"
+    fileprivate static let zoneCopiedFactoryQueryValue = "31"
+    fileprivate static let zoneEdensVerseQueryValue = "33"
     // URL
     fileprivate static let baseURL = URL(string: "https://www.fflogs.com:443/v1")
     fileprivate static let parsesPathComponent = "parses"
@@ -36,12 +43,13 @@ class EncounterController {
         
         // API key query
         var components = URLComponents(url: regionURL, resolvingAgainstBaseURL: true)
+        let zoneQuery = URLQueryItem(name: FFLogsStrings.zoneQueryName, value: FFLogsStrings.zoneEdensPromiseQueryValue)
         let metricQuery = URLQueryItem(name: FFLogsStrings.metricQueryName, value: FFLogsStrings.metricQueryValue)
         let timeFrameQuery = URLQueryItem(name: FFLogsStrings.timeFrameQueryName, value: FFLogsStrings.timeFrameQueryValue)
         let apiQuery = URLQueryItem(name: FFLogsStrings.apiKeyQueryName, value: FFLogsStrings.apiKeyQueryValue)
         
         // Appends apikey query to end of url
-        components?.queryItems = [metricQuery, timeFrameQuery, apiQuery]
+        components?.queryItems = [zoneQuery, metricQuery, timeFrameQuery, apiQuery]
         guard let finalURL = components?.url else {return completion(.failure(.invalidURL))}
         
         // DataTask

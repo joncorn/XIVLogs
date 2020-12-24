@@ -58,7 +58,6 @@ class TestTableViewController: UITableViewController {
         
         let ep = parseAsInt
         
-        
         if ep <= 24 {
             cell.detailTextLabel?.textColor = .gray
         } else if ep <= 49 {
@@ -83,7 +82,7 @@ class TestTableViewController: UITableViewController {
         // resets encounters array to empty before performing fetch
         encounters = []
         
-        EncounterController.fetchEncounter(with: "kazu mi", server: "faerie", region: "na") { (result) in
+        EncounterController.fetchEncounter(with: "kai leonte", server: "faerie", region: "na") { (result) in
             switch result {
             case .success(let encounters):
                 // for each object in array, only append highest parse of selected fight
