@@ -25,6 +25,8 @@
 		6DBAF1CB25936EEC0049AB53 /* XIVapiStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF1CA25936EEC0049AB53 /* XIVapiStrings.swift */; };
 		6DBAF1D22594B8140049AB53 /* ParseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF1D12594B8140049AB53 /* ParseTableViewCell.swift */; };
 		6DBAF1D52594BE300049AB53 /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF1D42594BE300049AB53 /* TestTableViewController.swift */; };
+		6DBAF1F325951CC00049AB53 /* EdensPromiseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF1F225951CC00049AB53 /* EdensPromiseViewController.swift */; };
+		6DBAF1F625958A100049AB53 /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF1F525958A100049AB53 /* StyleGuide.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		6DBAF1CA25936EEC0049AB53 /* XIVapiStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIVapiStrings.swift; sourceTree = "<group>"; };
 		6DBAF1D12594B8140049AB53 /* ParseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ParseTableViewCell.swift; path = ../../../../../Documents/ParseTableViewCell.swift; sourceTree = "<group>"; };
 		6DBAF1D42594BE300049AB53 /* TestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
+		6DBAF1F225951CC00049AB53 /* EdensPromiseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdensPromiseViewController.swift; sourceTree = "<group>"; };
+		6DBAF1F525958A100049AB53 /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
 		B66A119A3D95737223270BB5 /* Pods_XIVLogs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XIVLogs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEDEB092979AE23B2D215A81 /* Pods-XIVLogs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XIVLogs.debug.xcconfig"; path = "Target Support Files/Pods-XIVLogs/Pods-XIVLogs.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,6 +176,7 @@
 				6DBAF1C525936EDB0049AB53 /* CharacterError.swift */,
 				6DBAF1AE259363B70049AB53 /* FFLogsStrings.swift */,
 				6DBAF1CA25936EEC0049AB53 /* XIVapiStrings.swift */,
+				6DBAF1F525958A100049AB53 /* StyleGuide.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -183,6 +188,7 @@
 				6DBAF1B9259367190049AB53 /* TestViewController.swift */,
 				6DBAF1D12594B8140049AB53 /* ParseTableViewCell.swift */,
 				6DBAF1D42594BE300049AB53 /* TestTableViewController.swift */,
+				6DBAF1F225951CC00049AB53 /* EdensPromiseViewController.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -296,11 +302,13 @@
 				6DBAF185259361B10049AB53 /* AppDelegate.swift in Sources */,
 				6DBAF1B2259365E30049AB53 /* TestStrings.swift in Sources */,
 				6DBAF1C225936D290049AB53 /* CharacterController.swift in Sources */,
+				6DBAF1F325951CC00049AB53 /* EdensPromiseViewController.swift in Sources */,
 				6DBAF1BA259367190049AB53 /* TestViewController.swift in Sources */,
 				6DBAF1D52594BE300049AB53 /* TestTableViewController.swift in Sources */,
 				6DBAF1AF259363B70049AB53 /* FFLogsStrings.swift in Sources */,
 				6DBAF1C625936EDB0049AB53 /* CharacterError.swift in Sources */,
 				6DBAF1D22594B8140049AB53 /* ParseTableViewCell.swift in Sources */,
+				6DBAF1F625958A100049AB53 /* StyleGuide.swift in Sources */,
 				6DBAF1A42593624C0049AB53 /* Encounter.swift in Sources */,
 				6DBAF187259361B10049AB53 /* SceneDelegate.swift in Sources */,
 				6DBAF1CB25936EEC0049AB53 /* XIVapiStrings.swift in Sources */,
