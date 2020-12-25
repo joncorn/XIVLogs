@@ -34,26 +34,31 @@ class EdensPromiseViewController: UIViewController {
     @IBOutlet weak var cloudImageView: UIImageView!
     @IBOutlet weak var cloudNameView: UIView!
     @IBOutlet weak var cloudParseView: UIView!
+    @IBOutlet weak var cloudSpecImageView: UIImageView!
     @IBOutlet weak var cloudNameLabel: UILabel!
     // e10s Views
     @IBOutlet weak var shadowImageView: UIImageView!
     @IBOutlet weak var shadowNameView: UIView!
     @IBOutlet weak var shadowParseView: UIView!
+    @IBOutlet weak var shadowSpecImageView: UIImageView!
     @IBOutlet weak var shadowNameLabel: UILabel!
     // e11s Views
     @IBOutlet weak var fateImageView: UIImageView!
     @IBOutlet weak var fateNameView: UIView!
     @IBOutlet weak var fateParseView: UIView!
+    @IBOutlet weak var fateSpecImageView: UIImageView!
     @IBOutlet weak var fateNameLabel: UILabel!
     // e12s Views
     @IBOutlet weak var edenImageView: UIImageView!
     @IBOutlet weak var edenNameView: UIView!
     @IBOutlet weak var edenParseView: UIView!
+    @IBOutlet weak var edenSpecImageView: UIImageView!
     @IBOutlet weak var edenNameLabel: UILabel!
     // e12s2 Views
     @IBOutlet weak var oracleImageView: UIImageView!
     @IBOutlet weak var oracleNameView: UIView!
     @IBOutlet weak var oracleParseView: UIView!
+    @IBOutlet weak var oracleSpecImageView: UIImageView!
     @IBOutlet weak var oracleNameLabel: UILabel!
     
     //  MARK: - View Lifecycle

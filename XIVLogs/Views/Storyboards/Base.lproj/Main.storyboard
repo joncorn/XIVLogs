@@ -289,6 +289,10 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="npz-wN-gtg">
+                                        <rect key="frame" x="50" y="0.0" width="38" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -303,6 +307,10 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OXB-tU-t8J">
+                                        <rect key="frame" x="50" y="0.0" width="38" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -317,6 +325,10 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EXe-78-VDd">
+                                        <rect key="frame" x="50" y="0.0" width="38" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -331,6 +343,10 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Bc-9W-m7D">
+                                        <rect key="frame" x="52" y="0.0" width="38" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -393,6 +409,10 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mro-Vo-3XN">
+                                        <rect key="frame" x="50" y="0.0" width="38" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -405,6 +425,7 @@
                         <outlet property="cloudNameLabel" destination="Bdg-M9-wNH" id="Py0-qN-Jp2"/>
                         <outlet property="cloudNameView" destination="G0k-H1-cZx" id="TvF-yx-YMu"/>
                         <outlet property="cloudParseView" destination="lZs-DL-XJP" id="vTI-EG-X68"/>
+                        <outlet property="cloudSpecImageView" destination="mro-Vo-3XN" id="Hdf-Tf-KS2"/>
                         <outlet property="e10sParse" destination="x8s-Cp-cpg" id="wYS-3I-ic2"/>
                         <outlet property="e11sParse" destination="Cgp-mk-sBp" id="fiU-jm-Gsl"/>
                         <outlet property="e12s2Parse" destination="1z6-kF-NNy" id="ftr-GA-tHo"/>
@@ -414,16 +435,19 @@
                         <outlet property="edenNameLabel" destination="gpd-La-8PZ" id="saq-b0-HIl"/>
                         <outlet property="edenNameView" destination="dog-aV-5Gq" id="WSa-RR-iDL"/>
                         <outlet property="edenParseView" destination="hal-hz-y7b" id="1sr-li-qI7"/>
+                        <outlet property="edenSpecImageView" destination="EXe-78-VDd" id="z8w-4u-YAZ"/>
                         <outlet property="fateImageView" destination="Yfy-BE-R0h" id="Kxg-i4-CH3"/>
                         <outlet property="fateNameLabel" destination="ySs-cy-M1v" id="jFC-JR-Lyp"/>
                         <outlet property="fateNameView" destination="N4W-Sj-wbF" id="LWK-gC-gVU"/>
                         <outlet property="fateParseView" destination="iOj-cl-Lj1" id="S8N-MA-tOm"/>
+                        <outlet property="fateSpecImageView" destination="OXB-tU-t8J" id="6jj-Ml-0ps"/>
                         <outlet property="nameLabel" destination="yCm-g3-QTm" id="deT-c1-pJW"/>
                         <outlet property="nameTextField" destination="nyS-B8-uCx" id="IfK-OM-IwR"/>
                         <outlet property="oracleImageView" destination="6aE-fN-ai6" id="yCS-y4-Clq"/>
                         <outlet property="oracleNameLabel" destination="tJV-uQ-r7a" id="dae-3u-wXP"/>
                         <outlet property="oracleNameView" destination="hOV-Oy-Urs" id="xQS-ml-Owq"/>
                         <outlet property="oracleParseView" destination="6gr-tv-biW" id="Xwp-LX-Kjo"/>
+                        <outlet property="oracleSpecImageView" destination="7Bc-9W-m7D" id="GRN-DL-LUs"/>
                         <outlet property="regionTextField" destination="ajf-4u-6qS" id="gau-Mq-v0S"/>
                         <outlet property="serverLabel" destination="rWf-FH-bli" id="1Ee-Qe-Hm7"/>
                         <outlet property="serverTextField" destination="Q9F-Fd-rsS" id="Kff-f8-tYX"/>
@@ -431,6 +455,7 @@
                         <outlet property="shadowNameLabel" destination="Axv-ub-bsq" id="SvP-HC-nt1"/>
                         <outlet property="shadowNameView" destination="TP8-nU-vLs" id="gRD-9s-Jdx"/>
                         <outlet property="shadowParseView" destination="Eiv-o7-AXp" id="rMl-LN-9m0"/>
+                        <outlet property="shadowSpecImageView" destination="npz-wN-gtg" id="O6F-hk-n7K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZH-qk-TDU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
