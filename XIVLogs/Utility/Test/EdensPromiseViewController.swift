@@ -44,24 +44,35 @@ class EdensPromiseViewController: UIViewController {
     @IBOutlet weak var shadowParseView: UIView!
     @IBOutlet weak var shadowSpecImageView: UIImageView!
     @IBOutlet weak var shadowNameLabel: UILabel!
+    @IBOutlet weak var shadowDPSView: UIView!
+    @IBOutlet weak var shadowDPSLabel: UILabel!
     // e11s Views
     @IBOutlet weak var fateImageView: UIImageView!
     @IBOutlet weak var fateNameView: UIView!
     @IBOutlet weak var fateParseView: UIView!
     @IBOutlet weak var fateSpecImageView: UIImageView!
     @IBOutlet weak var fateNameLabel: UILabel!
+    @IBOutlet weak var fateDPSView: UIView!
+    @IBOutlet weak var fateDPSLabel: UILabel!
     // e12s Views
     @IBOutlet weak var edenImageView: UIImageView!
     @IBOutlet weak var edenNameView: UIView!
     @IBOutlet weak var edenParseView: UIView!
     @IBOutlet weak var edenSpecImageView: UIImageView!
     @IBOutlet weak var edenNameLabel: UILabel!
+    @IBOutlet weak var edenDPSView: UIView!
+    @IBOutlet weak var edenDPSLabel: UILabel!
     // e12s2 Views
     @IBOutlet weak var oracleImageView: UIImageView!
     @IBOutlet weak var oracleNameView: UIView!
     @IBOutlet weak var oracleParseView: UIView!
     @IBOutlet weak var oracleSpecImageView: UIImageView!
     @IBOutlet weak var oracleNameLabel: UILabel!
+    @IBOutlet weak var oracleDPSView: UIView!
+    @IBOutlet weak var oracleDPSLabel: UILabel!
+    //meme
+    @IBOutlet weak var kazuButton: UIButton!
+    @IBOutlet weak var kazuLabel: UILabel!
     
     //  MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -74,45 +85,61 @@ class EdensPromiseViewController: UIViewController {
         nameLabel.text = ""
         serverLabel.text = ""
         e9sParse.text = ""
+        cloudDPSLabel.text = ""
         cloudSpecImageView.image = nil
         e10sParse.text = ""
+        shadowDPSLabel.text = ""
         shadowSpecImageView.image = nil
         e11sParse.text = ""
+        fateDPSLabel.text = ""
         fateSpecImageView.image = nil
         e12sParse.text = ""
+        edenDPSLabel.text = ""
         edenSpecImageView.image = nil
         e12s2Parse.text = ""
+        oracleDPSLabel.text = ""
         oracleSpecImageView.image = nil
+        
         fetchData()
+        
+        if nameTextField.text == "kazu mi" {
+            kazuLabel.alpha = 1
+        }
     }
     
     //  MARK: - Methods
     func setupUI() {
         setupViews()
         setupLabels()
+        kazuLabel.alpha = 0
     }
     
     func setupViews() {
+        // Cloud
         StyleGuide.roundCorners(cloudImageView)
         StyleGuide.roundCorners(cloudNameView)
         StyleGuide.roundCorners(cloudParseView)
         StyleGuide.roundCorners(cloudDPSView)
-        
+        // Shadow
         StyleGuide.roundCorners(shadowImageView)
         StyleGuide.roundCorners(shadowNameView)
         StyleGuide.roundCorners(shadowParseView)
-        
+        StyleGuide.roundCorners(shadowDPSView)
+        // Fate
         StyleGuide.roundCorners(fateImageView)
         StyleGuide.roundCorners(fateNameView)
         StyleGuide.roundCorners(fateParseView)
-        
+        StyleGuide.roundCorners(fateDPSView)
+        // Eden
         StyleGuide.roundCorners(edenImageView)
         StyleGuide.roundCorners(edenNameView)
         StyleGuide.roundCorners(edenParseView)
-        
+        StyleGuide.roundCorners(edenDPSView)
+        // Oracle
         StyleGuide.roundCorners(oracleImageView)
         StyleGuide.roundCorners(oracleNameView)
         StyleGuide.roundCorners(oracleParseView)
+        StyleGuide.roundCorners(oracleDPSView)
     }
     
     func setupLabels() {
@@ -123,6 +150,17 @@ class EdensPromiseViewController: UIViewController {
         StyleGuide.encounterColor(oracleNameLabel)
         
         StyleGuide.rDPSColor(cloudDPSLabel)
+        StyleGuide.rDPSColor(shadowDPSLabel)
+        StyleGuide.rDPSColor(fateDPSLabel)
+        StyleGuide.rDPSColor(edenDPSLabel)
+        StyleGuide.rDPSColor(oracleDPSLabel)
+    }
+    
+    func rDPSFormatter(_ total: Double) -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        guard let rDPS = numberFormatter.string(from: NSNumber(value: Double(round(10*total)/10))) else { return "" }
+        return rDPS
     }
     
     func fetchCloudOfDarkness() {
@@ -134,7 +172,7 @@ class EdensPromiseViewController: UIViewController {
                 colorParse(parse: parseAsInt, parseLabel: self.e9sParse)
                 e9sParse.text = String(parseAsInt)
                 cloudSpecImageView.image = UIImage(named: cloudEncounters[0].spec)
-                cloudDPSLabel.text = cloudEncounters[0].
+                cloudDPSLabel.text = rDPSFormatter(cloudEncounters[0].total)
             }
         }
     }
@@ -148,6 +186,7 @@ class EdensPromiseViewController: UIViewController {
                 colorParse(parse: parseAsInt, parseLabel: self.e10sParse)
                 e10sParse.text = String(parseAsInt)
                 shadowSpecImageView.image = UIImage(named: shadowEncounters[0].spec)
+                shadowDPSLabel.text = rDPSFormatter(shadowEncounters[0].total)
             }
         }
     }
@@ -161,6 +200,7 @@ class EdensPromiseViewController: UIViewController {
                 colorParse(parse: parseAsInt, parseLabel: self.e11sParse)
                 e11sParse.text = String(parseAsInt)
                 fateSpecImageView.image = UIImage(named: fateEncounters[0].spec)
+                fateDPSLabel.text = rDPSFormatter(fateEncounters[0].total)
             }
         }
     }
@@ -174,6 +214,7 @@ class EdensPromiseViewController: UIViewController {
                 colorParse(parse: parseAsInt, parseLabel: self.e12sParse)
                 e12sParse.text = String(parseAsInt)
                 edenSpecImageView.image = UIImage(named: edensEncounters[0].spec)
+                edenDPSLabel.text = rDPSFormatter(edensEncounters[0].total)
             }
         }
     }
@@ -187,9 +228,12 @@ class EdensPromiseViewController: UIViewController {
                 colorParse(parse: parseAsInt, parseLabel: self.e12s2Parse)
                 self.e12s2Parse.text = String(parseAsInt)
                 oracleSpecImageView.image = UIImage(named: oracleEncounters[0].spec)
+                oracleDPSLabel.text = rDPSFormatter(oracleEncounters[0].total)
             }
         }
     }
+    
+    
     
     func updateNameLabel() {
         nameLabel.text = encounters[0].characterName
