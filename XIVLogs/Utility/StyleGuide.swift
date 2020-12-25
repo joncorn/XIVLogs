@@ -10,12 +10,17 @@ import UIKit
 
 struct StyleGuide {
     
-    // rDPS color
+    //  MARK: - Encounter Color
+    static func encounterColor(_ label: UILabel) {
+        label.textColor = UIColor(red:0.71, green:0.74, blue:1.00, alpha:1.0)
+    }
+    
+    //  MARK: - rDPS Color
     static func rDPSColor(_ label: UILabel) {
         label.textColor = UIColor(red:0.82, green:0.60, blue:0.98, alpha:1.0)
     }
     
-    // Parse Colors
+    //  MARK: - Parse Colors
     static func goldParse(_ label: UILabel) {
         label.textColor = UIColor(red:0.90, green:0.80, blue:0.50, alpha:1.0)
     }
@@ -44,7 +49,7 @@ struct StyleGuide {
         label.textColor = UIColor(red:0.40, green:0.40, blue:0.40, alpha:1.0)
     }
     
-    // Rounded corners
+    //  MARK: - Rounded Corners
     static func roundCorners(_ view: UIView) {
         view.layer.cornerRadius = 5
     }
