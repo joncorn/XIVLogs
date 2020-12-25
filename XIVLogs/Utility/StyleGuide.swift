@@ -10,6 +10,11 @@ import UIKit
 
 struct StyleGuide {
     
+    // rDPS color
+    static func rDPSColor(_ label: UILabel) {
+        label.textColor = UIColor(red:0.82, green:0.60, blue:0.98, alpha:1.0)
+    }
+    
     // Parse Colors
     static func goldParse(_ label: UILabel) {
         label.textColor = UIColor(red:0.90, green:0.80, blue:0.50, alpha:1.0)
