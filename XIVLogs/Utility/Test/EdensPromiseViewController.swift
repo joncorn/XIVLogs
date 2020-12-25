@@ -30,11 +30,31 @@ class EdensPromiseViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var serverTextField: UITextField!
     @IBOutlet weak var regionTextField: UITextField!
-    // Views
-    // e9s
+    // e9s Views
     @IBOutlet weak var cloudImageView: UIImageView!
     @IBOutlet weak var cloudNameView: UIView!
     @IBOutlet weak var cloudParseView: UIView!
+    @IBOutlet weak var cloudNameLabel: UILabel!
+    // e10s Views
+    @IBOutlet weak var shadowImageView: UIImageView!
+    @IBOutlet weak var shadowNameView: UIView!
+    @IBOutlet weak var shadowParseView: UIView!
+    @IBOutlet weak var shadowNameLabel: UILabel!
+    // e11s Views
+    @IBOutlet weak var fateImageView: UIImageView!
+    @IBOutlet weak var fateNameView: UIView!
+    @IBOutlet weak var fateParseView: UIView!
+    @IBOutlet weak var fateNameLabel: UILabel!
+    // e12s Views
+    @IBOutlet weak var edenImageView: UIImageView!
+    @IBOutlet weak var edenNameView: UIView!
+    @IBOutlet weak var edenParseView: UIView!
+    @IBOutlet weak var edenNameLabel: UILabel!
+    // e12s2 Views
+    @IBOutlet weak var oracleImageView: UIImageView!
+    @IBOutlet weak var oracleNameView: UIView!
+    @IBOutlet weak var oracleParseView: UIView!
+    @IBOutlet weak var oracleNameLabel: UILabel!
     
     //  MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -57,12 +77,37 @@ class EdensPromiseViewController: UIViewController {
     //  MARK: - Methods
     func setupUI() {
         setupViews()
+        setupLabels()
     }
     
     func setupViews() {
         StyleGuide.roundCorners(cloudImageView)
         StyleGuide.roundCorners(cloudNameView)
         StyleGuide.roundCorners(cloudParseView)
+        
+        StyleGuide.roundCorners(shadowImageView)
+        StyleGuide.roundCorners(shadowNameView)
+        StyleGuide.roundCorners(shadowParseView)
+        
+        StyleGuide.roundCorners(fateImageView)
+        StyleGuide.roundCorners(fateNameView)
+        StyleGuide.roundCorners(fateParseView)
+        
+        StyleGuide.roundCorners(edenImageView)
+        StyleGuide.roundCorners(edenNameView)
+        StyleGuide.roundCorners(edenParseView)
+        
+        StyleGuide.roundCorners(oracleImageView)
+        StyleGuide.roundCorners(oracleNameView)
+        StyleGuide.roundCorners(oracleParseView)
+    }
+    
+    func setupLabels() {
+        StyleGuide.encounterColor(cloudNameLabel)
+        StyleGuide.encounterColor(shadowNameLabel)
+        StyleGuide.encounterColor(fateNameLabel)
+        StyleGuide.encounterColor(edenNameLabel)
+        StyleGuide.encounterColor(oracleNameLabel)
     }
     
     func fetchCloudOfDarkness() {
