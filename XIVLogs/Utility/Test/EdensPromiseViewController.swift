@@ -36,6 +36,8 @@ class EdensPromiseViewController: UIViewController {
     @IBOutlet weak var cloudParseView: UIView!
     @IBOutlet weak var cloudSpecImageView: UIImageView!
     @IBOutlet weak var cloudNameLabel: UILabel!
+    @IBOutlet weak var cloudDPSView: UIView!
+    @IBOutlet weak var cloudDPSLabel: UILabel!
     // e10s Views
     @IBOutlet weak var shadowImageView: UIImageView!
     @IBOutlet weak var shadowNameView: UIView!
@@ -72,10 +74,15 @@ class EdensPromiseViewController: UIViewController {
         nameLabel.text = ""
         serverLabel.text = ""
         e9sParse.text = ""
+        cloudSpecImageView.image = nil
         e10sParse.text = ""
+        shadowSpecImageView.image = nil
         e11sParse.text = ""
+        fateSpecImageView.image = nil
         e12sParse.text = ""
+        edenSpecImageView.image = nil
         e12s2Parse.text = ""
+        oracleSpecImageView.image = nil
         fetchData()
     }
     
@@ -89,6 +96,7 @@ class EdensPromiseViewController: UIViewController {
         StyleGuide.roundCorners(cloudImageView)
         StyleGuide.roundCorners(cloudNameView)
         StyleGuide.roundCorners(cloudParseView)
+        StyleGuide.roundCorners(cloudDPSView)
         
         StyleGuide.roundCorners(shadowImageView)
         StyleGuide.roundCorners(shadowNameView)
@@ -113,6 +121,8 @@ class EdensPromiseViewController: UIViewController {
         StyleGuide.encounterColor(fateNameLabel)
         StyleGuide.encounterColor(edenNameLabel)
         StyleGuide.encounterColor(oracleNameLabel)
+        
+        StyleGuide.rDPSColor(cloudDPSLabel)
     }
     
     func fetchCloudOfDarkness() {
@@ -123,6 +133,8 @@ class EdensPromiseViewController: UIViewController {
                 let parseAsInt = Int(cloudEncounters[0].percentile)
                 colorParse(parse: parseAsInt, parseLabel: self.e9sParse)
                 e9sParse.text = String(parseAsInt)
+                cloudSpecImageView.image = UIImage(named: cloudEncounters[0].spec)
+                cloudDPSLabel.text = cloudEncounters[0].
             }
         }
     }
@@ -135,6 +147,7 @@ class EdensPromiseViewController: UIViewController {
                 let parseAsInt = Int(shadowEncounters[0].percentile)
                 colorParse(parse: parseAsInt, parseLabel: self.e10sParse)
                 e10sParse.text = String(parseAsInt)
+                shadowSpecImageView.image = UIImage(named: shadowEncounters[0].spec)
             }
         }
     }
@@ -147,6 +160,7 @@ class EdensPromiseViewController: UIViewController {
                 let parseAsInt = Int(fateEncounters[0].percentile)
                 colorParse(parse: parseAsInt, parseLabel: self.e11sParse)
                 e11sParse.text = String(parseAsInt)
+                fateSpecImageView.image = UIImage(named: fateEncounters[0].spec)
             }
         }
     }
@@ -159,6 +173,7 @@ class EdensPromiseViewController: UIViewController {
                 let parseAsInt = Int(edensEncounters[0].percentile)
                 colorParse(parse: parseAsInt, parseLabel: self.e12sParse)
                 e12sParse.text = String(parseAsInt)
+                edenSpecImageView.image = UIImage(named: edensEncounters[0].spec)
             }
         }
     }
@@ -171,6 +186,7 @@ class EdensPromiseViewController: UIViewController {
                 let parseAsInt = Int(oracleEncounters[0].percentile)
                 colorParse(parse: parseAsInt, parseLabel: self.e12s2Parse)
                 self.e12s2Parse.text = String(parseAsInt)
+                oracleSpecImageView.image = UIImage(named: oracleEncounters[0].spec)
             }
         }
     }

@@ -17,5 +17,6 @@ struct Encounter: Decodable {
     let characterName: String
     let server: String
     let percentile: Double
+    let total: Double
     let ilvlKeyOrPatch: Double
 }
