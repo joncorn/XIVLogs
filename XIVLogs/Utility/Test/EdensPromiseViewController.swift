@@ -145,19 +145,19 @@ class EdensPromiseViewController: UIViewController {
     
     func colorParse(parse: Int, parseLabel: UILabel) {
         if parse <= 24 {
-            parseLabel.textColor = .gray
+            StyleGuide.grayParse(parseLabel)
         } else if parse <= 49 {
-            parseLabel.textColor = .green
+            StyleGuide.greenParse(parseLabel)
         } else if parse <= 74 {
-            parseLabel.textColor = .blue
+            StyleGuide.blueParse(parseLabel)
         } else if parse <= 94 {
-            parseLabel.textColor = .purple
+            StyleGuide.purpleParse(parseLabel)
         } else if parse <= 98 {
-            parseLabel.textColor = .orange
+            StyleGuide.orangeParse(parseLabel)
         } else if parse <= 99 {
             StyleGuide.pinkParse(parseLabel)
         } else if parse <= 100 {
-            parseLabel.textColor = .yellow
+            StyleGuide.goldParse(parseLabel)
         }
     }
     
