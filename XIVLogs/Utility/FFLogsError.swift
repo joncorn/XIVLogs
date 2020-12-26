@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum EncounterError: LocalizedError {
+enum FFLogsError: LocalizedError {
     case invalidURL
     case thrownError(Error)
     case noData
