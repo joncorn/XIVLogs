@@ -233,8 +233,6 @@ class EdensPromiseViewController: UIViewController {
         }
     }
     
-    
-    
     func updateNameLabel() {
         nameLabel.text = encounters[0].characterName
     }

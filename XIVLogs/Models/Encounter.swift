@@ -15,6 +15,8 @@ struct Encounter: Decodable {
     let difficulty: Int
     let characterID: Int
     let characterName: String
+    let reportID: String
+    let fightID: Int
     let server: String
     let percentile: Double
     let total: Double
