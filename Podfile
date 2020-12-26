@@ -6,5 +6,6 @@ target 'XIVLogs' do
   use_frameworks!
 
   # Pods for XIVLogs
+pod 'SwiftCharts', '~> 0.6.5'
 
 end
