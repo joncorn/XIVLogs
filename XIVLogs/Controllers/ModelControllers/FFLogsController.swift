@@ -38,7 +38,13 @@ class FFLogsController {
     fileprivate static let summaryPathComponent = "summary"
     
     //  MARK: - Containers
+    // Singleton
     static let shared = FFLogsController()
+    
+    var encounters = [Encounter]() {
+        didSet {
+        }
+    }
     
     let servers = [
         // Aether DC - NA
@@ -120,8 +126,8 @@ class FFLogsController {
                    "JP",
                    "NA"]
     
-    let zoneStrings = ["Eden's Promise",
-                 "Eden's Verse",
+    let zoneStrings = ["Eden's Promise (Savage)",
+                 "Eden's Verse (Savage)",
                  "Trials III",
                  "Trials II",
                  "Puppet's Bunker",
@@ -135,7 +141,7 @@ class FFLogsController {
                     31]
     
     //  MARK: - Methods
-    static func fetchEncounter(with name: String, server: String, region: String, completion: @escaping (Result<[Encounter], FFLogsError>) -> Void) {
+    static func fetchZoneEncounters(name: String, server: String, region: String, zone: String, completion: @escaping (Result<[Encounter], FFLogsError>) -> Void) {
         
         // Build URL with search terms
         guard let baseURL = FFLogsStrings.baseURL else {return completion(.failure(.invalidURL))}
@@ -147,7 +153,7 @@ class FFLogsController {
         
         // Queries
         var components = URLComponents(url: regionURL, resolvingAgainstBaseURL: true)
-        let zoneQuery = URLQueryItem(name: FFLogsStrings.zoneQueryName, value: FFLogsStrings.zoneEdensPromiseQueryValue)
+        let zoneQuery = URLQueryItem(name: FFLogsStrings.zoneQueryName, value: zone)
         let metricQuery = URLQueryItem(name: FFLogsStrings.metricQueryName, value: FFLogsStrings.metricQueryValue)
         let timeFrameQuery = URLQueryItem(name: FFLogsStrings.timeFrameQueryName, value: FFLogsStrings.timeFrameQueryValue)
         let apiQuery = URLQueryItem(name: FFLogsStrings.apiKeyQueryName, value: FFLogsStrings.apiKeyQueryValue)

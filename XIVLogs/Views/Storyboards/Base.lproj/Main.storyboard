@@ -74,6 +74,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="searchButtonTapped:" destination="pLx-Or-Wsl" eventType="touchUpInside" id="NmI-YC-8td"/>
                                     <segue destination="eBy-4T-001" kind="show" identifier="toPlayerDetail" id="oA3-s1-2DH"/>
                                 </connections>
                             </button>

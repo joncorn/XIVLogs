@@ -40,19 +40,19 @@ class TestViewController: UIViewController {
               let region = regionTextField.text, !region.isEmpty else { return }
         
         // Fetching array of encounter objects
-        FFLogsController.fetchEncounter(with: name, server: server, region: region) { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let encounters):
-                    self.encounters = encounters
-                case .failure(let error):
-                    print(error, error.localizedDescription)
-                }
-                self.updateViews(with: self.encounters[0].characterName, spec: self.encounters[0].spec, percentile: self.encounters[0].percentile, encounter: self.encounters[0].encounterName)
-                
-                self.parseTableView.reloadData()
-            }
-        }
+//        FFLogsController.fetchZoneEncounters(with: name, server: server, region: region) { (result) in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let encounters):
+//                    self.encounters = encounters
+//                case .failure(let error):
+//                    print(error, error.localizedDescription)
+//                }
+//                self.updateViews(with: self.encounters[0].characterName, spec: self.encounters[0].spec, percentile: self.encounters[0].percentile, encounter: self.encounters[0].encounterName)
+//                
+//                self.parseTableView.reloadData()
+//            }
+//        }
         
         
         // Fetching character data

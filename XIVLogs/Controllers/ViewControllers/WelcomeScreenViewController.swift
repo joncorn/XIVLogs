@@ -10,6 +10,7 @@ import UIKit
 class WelcomeScreenViewController: UIViewController {
     
     //  MARK: - Properties
+    
     /// PickerView to present as keyboard
     var serverPicker: serverPickerView?
     var regionPicker: regionPickerView?
@@ -50,6 +51,11 @@ class WelcomeScreenViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         clearTextFields()
+    }
+    
+    //  MARK: - Actions
+    @IBAction func searchButtonTapped(_ sender: Any) {
+        fetchEncounters()
     }
     
     //  MARK: - Methods
@@ -245,5 +251,57 @@ class WelcomeScreenViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.barStyle = .black
+    }
+    
+    /// Fetch encounters with text field data
+    func fetchEncounters() {
+        // Make sure text fields have values
+        guard let name = characterSearchTextField.text, !name.isEmpty,
+              let server = serverSearchTextField.text, !server.isEmpty,
+              let region = regionSearchTextField.text, !region.isEmpty,
+              let zone = zoneSearchTextField.text, !zone.isEmpty else { return }
+        
+        // Associate zone string with corresponding int
+        var zoneIDString: String = "38"
+        if zone == "Eden's Promise (Savage)" {
+            zoneIDString = FFLogsStrings.zoneEdensPromiseQueryValue
+        } else if zone == "Eden's Verse (Savage)" {
+            zoneIDString = FFLogsStrings.zoneEdensVerseQueryValue
+        } else if zone == "Trials III" {
+            zoneIDString = FFLogsStrings.zoneTrialsIIIQueryValue
+        } else if zone == "Trials II" {
+            zoneIDString = FFLogsStrings.zoneTrialsIIQueryValue
+        } else if zone == "Puppet's Bunker" {
+            zoneIDString = FFLogsStrings.zonePuppetsBunkerQueryValue
+        } else if zone == "Copied Factory" {
+            zoneIDString = FFLogsStrings.zoneCopiedFactoryQueryValue
+        }
+        
+        // Clear encounter array
+        FFLogsController.shared.encounters = []
+        // Network call to get zone encounters
+        FFLogsController.fetchZoneEncounters(name: name, server: server, region: region, zone: zoneIDString) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let encounters):
+                    FFLogsController.shared.encounters = encounters
+                case .failure(let error):
+                    print(error, error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    //  MARK: - Prepare for segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is PlayerDetailViewController {
+            guard let zone = zoneSearchTextField.text, !zone.isEmpty,
+                  let region = regionSearchTextField.text, !region.isEmpty,
+                  let server = serverSearchTextField.text, !server.isEmpty else { return }
+            let vc = segue.destination as? PlayerDetailViewController
+            // this is where you send data, 'destinationvc.entrylanding = entry'
+            //vc.property = value
+            vc?.encounterTier = zone
+        }
     }
 }

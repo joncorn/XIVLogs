@@ -102,7 +102,7 @@ class EdensPromiseViewController: UIViewController {
         oracleDPSLabel.text = ""
         oracleSpecImageView.image = nil
         
-        fetchData()
+//        fetchData()
     }
     
     //  MARK: - Methods
@@ -294,19 +294,19 @@ class EdensPromiseViewController: UIViewController {
         }
     }
     
-    func fetchData() {
-        guard let name = nameTextField.text, !name.isEmpty,
-              let server = serverTextField.text, !server.isEmpty,
-              let region = regionTextField.text, !region.isEmpty else { return }
-        FFLogsController.fetchEncounter(with: name, server: server, region: region) { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let encounters):
-                    self.encounters = encounters
-                case .failure(let error):
-                    print(error, error.localizedDescription)
-                }
-            }
-        }
-    }
+//    func fetchData() {
+//        guard let name = nameTextField.text, !name.isEmpty,
+//              let server = serverTextField.text, !server.isEmpty,
+//              let region = regionTextField.text, !region.isEmpty else { return }
+//        FFLogsController.fetchZoneEncounters(with: name, server: server, region: region) { (result) in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let encounters):
+//                    self.encounters = encounters
+//                case .failure(let error):
+//                    print(error, error.localizedDescription)
+//                }
+//            }
+//        }
+//    }
 }

@@ -82,20 +82,21 @@ class TestTableViewController: UITableViewController {
         // resets encounters array to empty before performing fetch
         encounters = []
         
-        FFLogsController.fetchEncounter(with: "kai leonte", server: "faerie", region: "na") { (result) in
-            switch result {
-            case .success(let encounters):
-                // for each object in array, only append highest parse of selected fight
-                for e in encounters {
-                    if e.difficulty == 101 {
-//                    if e.difficulty == 101 && e.encounterName == "Cloud of Darkness" && e.percentile >= encounters[0].percentile {
-                        self.encounters.append(e)
-                        self.characterID = e.characterID
-                    }
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
+//        FFLogsController.fetchZoneEncounters(with: "kai leonte", server: "faerie", region: "na") { (result) in
+//            switch result {
+//            case .success(let encounters):
+//                // for each object in array, only append highest parse of selected fight
+//                for e in encounters {
+//                    if e.difficulty == 101 {
+////                    if e.difficulty == 101 && e.encounterName == "Cloud of Darkness" && e.percentile >= encounters[0].percentile {
+//                        self.encounters.append(e)
+//                        self.characterID = e.characterID
+//                    }
+//                }
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
+//    }
+}
 }

@@ -10,7 +10,7 @@ import UIKit
 class PlayerDetailViewController: UIViewController {
     
     //  MARK: - Properties
-    
+    var encounterTier: String?
     
     //  MARK: - Outlets
     // Avatar
@@ -25,6 +25,8 @@ class PlayerDetailViewController: UIViewController {
     //  MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.zoneNameLabel.text = encounterTier
         
         self.topParseListTableView.delegate = self
         self.topParseListTableView.dataSource = self
