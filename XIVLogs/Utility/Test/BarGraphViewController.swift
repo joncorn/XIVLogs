@@ -6,24 +6,29 @@
 //
 
 import UIKit
+import SwiftCharts
 
 class BarGraphViewController: UIViewController {
-
+    
+    //  MARK: - Properties
+    
+    var chartView: BarsChart!
+    
+    //  MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    //  MARK: - BarChart video
+    
+    let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0, to: 800, by: 100))
+    
+    let frame = CGRect(x: 0, y: 270, width: 500, height: 450)
+    
+    let chart = BarsChart(frame: CGRect(x: 0, y: 270, width: 500, height: 450), chartConfig: BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0, to: 800, by: 100)), xTitle: "months", yTitle: "Units Sold", bars: [("Jan", 120), ("Feb", 400.5), ("Mar", 100), ("Apr", 500.4)], color: UIColor.darkGray, barWidth: 15)
+    
+    
+    
+    //  MARK: - Methods
+    
 }

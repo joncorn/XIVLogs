@@ -16,6 +16,8 @@ class EdensPromiseViewController: UIViewController {
         }
     }
     
+    var fights = [Report.Fights]()
+    
     //  MARK: - Outlets
     // Character name and server labels
     @IBOutlet weak var nameLabel: UILabel!
@@ -70,9 +72,9 @@ class EdensPromiseViewController: UIViewController {
     @IBOutlet weak var oracleNameLabel: UILabel!
     @IBOutlet weak var oracleDPSView: UIView!
     @IBOutlet weak var oracleDPSLabel: UILabel!
-    //meme
-    @IBOutlet weak var kazuButton: UIButton!
-    @IBOutlet weak var kazuLabel: UILabel!
+    // Test label to see if you can get log info
+    
+    @IBOutlet weak var totalLabel: UILabel!
     
     //  MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -101,17 +103,12 @@ class EdensPromiseViewController: UIViewController {
         oracleSpecImageView.image = nil
         
         fetchData()
-        
-        if nameTextField.text == "kazu mi" {
-            kazuLabel.alpha = 1
-        }
     }
     
     //  MARK: - Methods
     func setupUI() {
         setupViews()
         setupLabels()
-        kazuLabel.alpha = 0
     }
     
     func setupViews() {
@@ -164,7 +161,9 @@ class EdensPromiseViewController: UIViewController {
     }
     
     func fetchCloudOfDarkness() {
+        // Property to hold single encounter for top parse
         var cloudEncounters = [Encounter]()
+        // For each encounter in the self.encounters array, do actions
         for e in encounters {
             if e.difficulty == 101 && e.encounterName == "Cloud of Darkness" {
                 cloudEncounters.append(e)
@@ -173,6 +172,32 @@ class EdensPromiseViewController: UIViewController {
                 e9sParse.text = String(parseAsInt)
                 cloudSpecImageView.image = UIImage(named: cloudEncounters[0].spec)
                 cloudDPSLabel.text = rDPSFormatter(cloudEncounters[0].total)
+            }
+        }
+        // Fetch report with cloudEncounter's reportID
+        
+         // Fetch log with self.report's start and end time
+//        EncounterController.fetchLog(withReportID: cloudEncounters[0].reportID, startTime: , endTime: ) { (result) in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let log):
+//                    self.log = log
+//                case .failure(let error):
+//                    print(error, error.localizedDescription)
+//                }
+//            }
+//        }
+    }
+    
+    func fetchReport(reportID: String) {
+        FFLogsController.fetchReport(withReportID: reportID) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let report):
+                    self.fights = report.fights
+                case .failure(let error):
+                    print(error, error.localizedDescription)
+                }
             }
         }
     }
@@ -273,7 +298,7 @@ class EdensPromiseViewController: UIViewController {
         guard let name = nameTextField.text, !name.isEmpty,
               let server = serverTextField.text, !server.isEmpty,
               let region = regionTextField.text, !region.isEmpty else { return }
-        EncounterController.fetchEncounter(with: name, server: server, region: region) { (result) in
+        FFLogsController.fetchEncounter(with: name, server: server, region: region) { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let encounters):

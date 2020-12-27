@@ -7,7 +7,7 @@
 
 import Foundation
 
-class EncounterController {
+class FFLogsController {
     
     //  MARK: - Strings
     // API Key

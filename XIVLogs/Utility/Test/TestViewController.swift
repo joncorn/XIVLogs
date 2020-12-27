@@ -40,7 +40,7 @@ class TestViewController: UIViewController {
               let region = regionTextField.text, !region.isEmpty else { return }
         
         // Fetching array of encounter objects
-        EncounterController.fetchEncounter(with: name, server: server, region: region) { (result) in
+        FFLogsController.fetchEncounter(with: name, server: server, region: region) { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let encounters):

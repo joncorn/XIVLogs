@@ -14,7 +14,7 @@
 		6DBAF18E259361B40049AB53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DBAF18D259361B40049AB53 /* Assets.xcassets */; };
 		6DBAF191259361B40049AB53 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DBAF18F259361B40049AB53 /* LaunchScreen.storyboard */; };
 		6DBAF1A42593624C0049AB53 /* Encounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF1A32593624C0049AB53 /* Encounter.swift */; };
-		6DBAF1A7259362BE0049AB53 /* EncounterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF1A6259362BE0049AB53 /* EncounterController.swift */; };
+		6DBAF1A7259362BE0049AB53 /* FFLogsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF1A6259362BE0049AB53 /* FFLogsController.swift */; };
 		6DBAF1AB2593632B0049AB53 /* FFLogsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF1AA2593632B0049AB53 /* FFLogsError.swift */; };
 		6DBAF1AF259363B70049AB53 /* FFLogsStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF1AE259363B70049AB53 /* FFLogsStrings.swift */; };
 		6DBAF1B2259365E30049AB53 /* TestStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF1B1259365E30049AB53 /* TestStrings.swift */; };
@@ -31,6 +31,9 @@
 		6DBAF2282596F37C0049AB53 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF2272596F37C0049AB53 /* Report.swift */; };
 		6DBAF22C259714330049AB53 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF22B259714330049AB53 /* Log.swift */; };
 		6DBAF22F259717310049AB53 /* RPGLogsStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF22E259717310049AB53 /* RPGLogsStrings.swift */; };
+		6DBAF23D259780130049AB53 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF23C259780130049AB53 /* UITextFieldExtension.swift */; };
+		6DBAF240259780AB0049AB53 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF23F259780AB0049AB53 /* WelcomeScreenViewController.swift */; };
+		6DBAF244259790B50049AB53 /* PlayerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF243259790B40049AB53 /* PlayerDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +46,7 @@
 		6DBAF190259361B40049AB53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6DBAF192259361B40049AB53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DBAF1A32593624C0049AB53 /* Encounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encounter.swift; sourceTree = "<group>"; };
-		6DBAF1A6259362BE0049AB53 /* EncounterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncounterController.swift; sourceTree = "<group>"; };
+		6DBAF1A6259362BE0049AB53 /* FFLogsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFLogsController.swift; sourceTree = "<group>"; };
 		6DBAF1AA2593632B0049AB53 /* FFLogsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFLogsError.swift; sourceTree = "<group>"; };
 		6DBAF1AE259363B70049AB53 /* FFLogsStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFLogsStrings.swift; sourceTree = "<group>"; };
 		6DBAF1B1259365E30049AB53 /* TestStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStrings.swift; sourceTree = "<group>"; };
@@ -60,6 +63,9 @@
 		6DBAF2272596F37C0049AB53 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		6DBAF22B259714330049AB53 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		6DBAF22E259717310049AB53 /* RPGLogsStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPGLogsStrings.swift; sourceTree = "<group>"; };
+		6DBAF23C259780130049AB53 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		6DBAF23F259780AB0049AB53 /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
+		6DBAF243259790B40049AB53 /* PlayerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailViewController.swift; sourceTree = "<group>"; };
 		B66A119A3D95737223270BB5 /* Pods_XIVLogs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XIVLogs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEDEB092979AE23B2D215A81 /* Pods-XIVLogs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XIVLogs.debug.xcconfig"; path = "Target Support Files/Pods-XIVLogs/Pods-XIVLogs.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -165,6 +171,8 @@
 		6DBAF1A0259361FE0049AB53 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6DBAF23F259780AB0049AB53 /* WelcomeScreenViewController.swift */,
+				6DBAF243259790B40049AB53 /* PlayerDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -172,7 +180,7 @@
 		6DBAF1A1259362040049AB53 /* ModelControllers */ = {
 			isa = PBXGroup;
 			children = (
-				6DBAF1A6259362BE0049AB53 /* EncounterController.swift */,
+				6DBAF1A6259362BE0049AB53 /* FFLogsController.swift */,
 				6DBAF1C125936D290049AB53 /* CharacterController.swift */,
 			);
 			path = ModelControllers;
@@ -188,6 +196,7 @@
 				6DBAF22E259717310049AB53 /* RPGLogsStrings.swift */,
 				6DBAF1CA25936EEC0049AB53 /* XIVapiStrings.swift */,
 				6DBAF1F525958A100049AB53 /* StyleGuide.swift */,
+				6DBAF23C259780130049AB53 /* UITextFieldExtension.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -333,6 +342,7 @@
 				6DBAF1B2259365E30049AB53 /* TestStrings.swift in Sources */,
 				6DBAF1C225936D290049AB53 /* CharacterController.swift in Sources */,
 				6DBAF1F325951CC00049AB53 /* EdensPromiseViewController.swift in Sources */,
+				6DBAF244259790B50049AB53 /* PlayerDetailViewController.swift in Sources */,
 				6DBAF2282596F37C0049AB53 /* Report.swift in Sources */,
 				6DBAF1BA259367190049AB53 /* TestViewController.swift in Sources */,
 				6DBAF1D52594BE300049AB53 /* TestTableViewController.swift in Sources */,
@@ -343,10 +353,12 @@
 				6DBAF1F625958A100049AB53 /* StyleGuide.swift in Sources */,
 				6DBAF1A42593624C0049AB53 /* Encounter.swift in Sources */,
 				6DBAF22C259714330049AB53 /* Log.swift in Sources */,
+				6DBAF240259780AB0049AB53 /* WelcomeScreenViewController.swift in Sources */,
 				6DBAF22F259717310049AB53 /* RPGLogsStrings.swift in Sources */,
+				6DBAF23D259780130049AB53 /* UITextFieldExtension.swift in Sources */,
 				6DBAF187259361B10049AB53 /* SceneDelegate.swift in Sources */,
 				6DBAF1CB25936EEC0049AB53 /* XIVapiStrings.swift in Sources */,
-				6DBAF1A7259362BE0049AB53 /* EncounterController.swift in Sources */,
+				6DBAF1A7259362BE0049AB53 /* FFLogsController.swift in Sources */,
 				6DBAF1AB2593632B0049AB53 /* FFLogsError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

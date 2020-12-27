@@ -11,10 +11,12 @@ struct Report: Decodable {
     let fights: [Fights]
     
     struct Fights: Decodable {
-        let startTime: String
-        let endTime: String
+        let id: Int
+        let startTime: Int
+        let endTime: Int
         
         enum CodingKeys: String, CodingKey {
+            case id
             case startTime = "start_time"
             case endTime = "end_time"
         }
