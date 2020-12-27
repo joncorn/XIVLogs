@@ -37,6 +37,103 @@ class FFLogsController {
     fileprivate static let tablesPathComponent = "tables"
     fileprivate static let summaryPathComponent = "summary"
     
+    //  MARK: - Containers
+    static let shared = FFLogsController()
+    
+    let servers = [
+        // Aether DC - NA
+        "Adamantoise",
+        "Cactuar",
+        "Faerie",
+        "Gilgamesh",
+        "Jenova",
+        "Midgardsormr",
+        "Sargatanas",
+        "Siren",
+        // Crystal DC - NA
+        "Balmung",
+        "Brynhildr",
+        "Coeurl",
+        "Diabolos",
+        "Goblin",
+        "Malboro",
+        "Mateus",
+        "Zalera",
+        // Primal DC - NA
+        "Behemoth",
+        "Excalibur",
+        "Exodus",
+        "Famfrit",
+        "Hyperion",
+        "Lamia",
+        "Leviathan",
+        "Ultros",
+        // Chaos DC - EU
+        "Cerberus",
+        "Louisoix",
+        "Moogle",
+        "Omega",
+        "Ragnarok",
+        // Light DC - EU
+        "Lich",
+        "Odin",
+        "Phoenix",
+        "Shiva",
+        "Zodiark",
+        // Elemental DC - JP
+        "Aegis",
+        "Atomos",
+        "Carbuncle",
+        "Garuda",
+        "Gungnir",
+        "Kujata",
+        "Ramuh",
+        "Tonberry",
+        "Typhon",
+        "Unicorn",
+        // Gaia DC - JP
+        "Alexander",
+        "Bahamut",
+        "Durandal",
+        "Fenrir",
+        "Ifrit",
+        "Ridill",
+        "Tiamat",
+        "Ultima",
+        "Valefor",
+        "Yojimbo",
+        "Zeromus",
+        // Mana DC - JP
+        "Anima",
+        "Asura",
+        "Belias",
+        "Chocobo",
+        "Hades",
+        "Ixion",
+        "Mandragora",
+        "Masamune",
+        "Pandemonium",
+        "Shinryu",
+        "Titan"]
+    
+    let regions = ["EU",
+                   "JP",
+                   "NA"]
+    
+    let zoneStrings = ["Eden's Promise",
+                 "Eden's Verse",
+                 "Trials III",
+                 "Trials II",
+                 "Puppet's Bunker",
+                 "Copied Factory"]
+    
+    let zoneInts = [38,
+                    33,
+                    37,
+                    34,
+                    35,
+                    31]
+    
     //  MARK: - Methods
     static func fetchEncounter(with name: String, server: String, region: String, completion: @escaping (Result<[Encounter], FFLogsError>) -> Void) {
         

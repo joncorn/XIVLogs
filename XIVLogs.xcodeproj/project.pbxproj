@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		4AA43A547133B76F3B905096 /* Pods_XIVLogs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66A119A3D95737223270BB5 /* Pods_XIVLogs.framework */; };
+		6DAA4E1425984DC8006C963C /* topParseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAA4E1325984DC8006C963C /* topParseTableViewCell.swift */; };
+		6DAA4E18259851A9006C963C /* serverPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAA4E17259851A9006C963C /* serverPickerView.swift */; };
+		6DAA4E1B259851B4006C963C /* regionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAA4E1A259851B4006C963C /* regionPickerView.swift */; };
+		6DAA4E1E25985E56006C963C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAA4E1D25985E56006C963C /* UIColorExtension.swift */; };
+		6DAA4E2125986CFB006C963C /* zonePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAA4E2025986CFB006C963C /* zonePickerView.swift */; };
 		6DBAF185259361B10049AB53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF184259361B10049AB53 /* AppDelegate.swift */; };
 		6DBAF187259361B10049AB53 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBAF186259361B10049AB53 /* SceneDelegate.swift */; };
 		6DBAF18C259361B10049AB53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DBAF18A259361B10049AB53 /* Main.storyboard */; };
@@ -38,6 +43,11 @@
 
 /* Begin PBXFileReference section */
 		51D7DF07BB483C9C35F0E59C /* Pods-XIVLogs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XIVLogs.release.xcconfig"; path = "Target Support Files/Pods-XIVLogs/Pods-XIVLogs.release.xcconfig"; sourceTree = "<group>"; };
+		6DAA4E1325984DC8006C963C /* topParseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = topParseTableViewCell.swift; sourceTree = "<group>"; };
+		6DAA4E17259851A9006C963C /* serverPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = serverPickerView.swift; sourceTree = "<group>"; };
+		6DAA4E1A259851B4006C963C /* regionPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = regionPickerView.swift; sourceTree = "<group>"; };
+		6DAA4E1D25985E56006C963C /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		6DAA4E2025986CFB006C963C /* zonePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zonePickerView.swift; sourceTree = "<group>"; };
 		6DBAF181259361B10049AB53 /* XIVLogs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XIVLogs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DBAF184259361B10049AB53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DBAF186259361B10049AB53 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +98,24 @@
 				B66A119A3D95737223270BB5 /* Pods_XIVLogs.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6DAA4E1225984D95006C963C /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				6DAA4E1325984DC8006C963C /* topParseTableViewCell.swift */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		6DAA4E24259875C6006C963C /* PickerViews */ = {
+			isa = PBXGroup;
+			children = (
+				6DAA4E17259851A9006C963C /* serverPickerView.swift */,
+				6DAA4E1A259851B4006C963C /* regionPickerView.swift */,
+				6DAA4E2025986CFB006C963C /* zonePickerView.swift */,
+			);
+			path = PickerViews;
 			sourceTree = "<group>";
 		};
 		6DBAF178259361B10049AB53 = {
@@ -163,6 +191,7 @@
 		6DBAF19F259361EA0049AB53 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6DAA4E1225984D95006C963C /* CustomCells */,
 				6DBAF19C259361D70049AB53 /* Storyboards */,
 			);
 			path = Views;
@@ -189,6 +218,7 @@
 		6DBAF1A9259363100049AB53 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				6DAA4E24259875C6006C963C /* PickerViews */,
 				6DBAF1CE259370630049AB53 /* Test */,
 				6DBAF1AA2593632B0049AB53 /* FFLogsError.swift */,
 				6DBAF1C525936EDB0049AB53 /* CharacterError.swift */,
@@ -197,6 +227,7 @@
 				6DBAF1CA25936EEC0049AB53 /* XIVapiStrings.swift */,
 				6DBAF1F525958A100049AB53 /* StyleGuide.swift */,
 				6DBAF23C259780130049AB53 /* UITextFieldExtension.swift */,
+				6DAA4E1D25985E56006C963C /* UIColorExtension.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -344,11 +375,15 @@
 				6DBAF1F325951CC00049AB53 /* EdensPromiseViewController.swift in Sources */,
 				6DBAF244259790B50049AB53 /* PlayerDetailViewController.swift in Sources */,
 				6DBAF2282596F37C0049AB53 /* Report.swift in Sources */,
+				6DAA4E1425984DC8006C963C /* topParseTableViewCell.swift in Sources */,
 				6DBAF1BA259367190049AB53 /* TestViewController.swift in Sources */,
 				6DBAF1D52594BE300049AB53 /* TestTableViewController.swift in Sources */,
+				6DAA4E1B259851B4006C963C /* regionPickerView.swift in Sources */,
 				6DBAF1AF259363B70049AB53 /* FFLogsStrings.swift in Sources */,
+				6DAA4E2125986CFB006C963C /* zonePickerView.swift in Sources */,
 				6DBAF1C625936EDB0049AB53 /* CharacterError.swift in Sources */,
 				6DBAF2242596ED8C0049AB53 /* BarGraphViewController.swift in Sources */,
+				6DAA4E1E25985E56006C963C /* UIColorExtension.swift in Sources */,
 				6DBAF1D22594B8140049AB53 /* ParseTableViewCell.swift in Sources */,
 				6DBAF1F625958A100049AB53 /* StyleGuide.swift in Sources */,
 				6DBAF1A42593624C0049AB53 /* Encounter.swift in Sources */,
@@ -358,6 +393,7 @@
 				6DBAF23D259780130049AB53 /* UITextFieldExtension.swift in Sources */,
 				6DBAF187259361B10049AB53 /* SceneDelegate.swift in Sources */,
 				6DBAF1CB25936EEC0049AB53 /* XIVapiStrings.swift in Sources */,
+				6DAA4E18259851A9006C963C /* serverPickerView.swift in Sources */,
 				6DBAF1A7259362BE0049AB53 /* FFLogsController.swift in Sources */,
 				6DBAF1AB2593632B0049AB53 /* FFLogsError.swift in Sources */,
 			);
@@ -510,7 +546,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GL869MT3HY;
 				INFOPLIST_FILE = XIVLogs/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -531,7 +567,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GL869MT3HY;
 				INFOPLIST_FILE = XIVLogs/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
