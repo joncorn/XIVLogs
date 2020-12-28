@@ -11,6 +11,7 @@ class PlayerDetailViewController: UIViewController {
     
     //  MARK: - Properties
     var encounterTier: String?
+    var region: String = "Hydaelyn"
     
     //  MARK: - Outlets
     // Avatar
@@ -26,6 +27,9 @@ class PlayerDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.playerNameLabel.text = FFLogsController.shared.encounters[0].characterName
+        self.playerServerLabel.text = "\(FFLogsController.shared.encounters[0].server) (\(region))"
+        
         self.zoneNameLabel.text = encounterTier
         
         self.topParseListTableView.delegate = self
@@ -36,7 +40,15 @@ class PlayerDetailViewController: UIViewController {
     
     //  MARK: - Methods
     func setupUI() {
-        
+        setupNavBar()
+    }
+    
+    /// Setup navbar back arrow
+    func setupNavBar() {
+        let backArrow = UIImage(named: "arrow.left")
+        self.navigationController?.navigationBar.backIndicatorImage = backArrow
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backArrow
+        self.navigationController?.navigationBar.backItem?.title = ""
     }
 }
 
@@ -48,7 +60,8 @@ extension PlayerDetailViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        guard let cell = self.topParseListTableView.dequeueReusableCell(withIdentifier: "topParseCell", for: indexPath) as? topParseTableViewCell else {return UITableViewCell()}
+        
         return cell
     }
     

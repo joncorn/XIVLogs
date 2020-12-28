@@ -56,6 +56,6 @@ class serverPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelega
     
     public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         /// Change text color of rows in pickerView
-        return NSAttributedString(string: FFLogsController.shared.servers.sorted()[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        return NSAttributedString(string: FFLogsController.shared.servers[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
 }

@@ -122,9 +122,9 @@ class FFLogsController {
         "Shinryu",
         "Titan"]
     
-    let regions = ["EU",
-                   "JP",
-                   "NA"]
+    let regions = ["NA",
+                   "EU",
+                   "JP"]
     
     let zoneStrings = ["Eden's Promise (Savage)",
                  "Eden's Verse (Savage)",
