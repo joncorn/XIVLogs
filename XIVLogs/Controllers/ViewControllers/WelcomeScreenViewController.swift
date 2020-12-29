@@ -107,6 +107,13 @@ class WelcomeScreenViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
+    /// Presents alert controller if player exists but no records come back from server
+    func presentNoRecordsAlert() {
+        let alert = UIAlertController(title: "No logs returned!", message: "User may have logs set to private, or data is unable to be retrieved from the server at this time", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
     func setupPickerViews() {
         // Server PickerView
         serverPicker = serverPickerView()
@@ -314,7 +321,11 @@ class WelcomeScreenViewController: UIViewController {
                 case .success(let encounters):
                     FFLogsController.shared.encounters = encounters
                     // Perform segue
-                    self.performSegue(withIdentifier: "toPlayerDetail", sender: self)
+                    if FFLogsController.shared.encounters != [] {
+                        self.performSegue(withIdentifier: "toPlayerDetail", sender: self)
+                    } else {
+                        self.presentNoRecordsAlert()
+                    }
                 case .failure(let error):
                     print(error, error.localizedDescription)
                     // Present action sheet

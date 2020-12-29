@@ -26,8 +26,7 @@ class PlayerDetailViewController: UIViewController {
     //  MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.topParseListTableView.reloadData()
-        
+
         self.playerNameLabel.text = FFLogsController.shared.encounters[0].characterName
         self.playerServerLabel.text = "\(FFLogsController.shared.encounters[0].server) (\(region))"
         
@@ -57,7 +56,21 @@ class PlayerDetailViewController: UIViewController {
 extension PlayerDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return FFLogsController.shared.encounterCounter
+        var counter = 0
+        if encounterTier == "Eden's Promise (Savage)" {
+            counter = 5
+        } else if encounterTier == "Eden's Verse (Savage)" {
+            counter = 4
+        } else if encounterTier == "Trials II" {
+            counter = 4
+        } else if encounterTier == "Puppet's Bunker" {
+            counter = 4
+        } else if encounterTier == "Copied Factory" {
+            counter = 4
+        } else if encounterTier == "Trials III" {
+            counter = 2
+        }
+        return counter
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

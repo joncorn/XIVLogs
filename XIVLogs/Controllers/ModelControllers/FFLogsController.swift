@@ -41,44 +41,13 @@ class FFLogsController {
     // Singleton
     static let shared = FFLogsController()
     
+    /// Holds encounter objects fetched from api
     var encounters = [Encounter]() {
         didSet {
-            // reseting counter each time new data is set
-            self.encounterCounter = 0
-            /** Append only cloud of darkness ecounters from `encounters`
-                then add 1 to the `encounterCounter` count
-             */
-            self.appendCloudOfDarkness(fromEncounters: encounters)
-            if cloudOfDarknessEncounters != [] {
-                encounterCounter += 1
-                print(encounterCounter)
-            }
-            // Append shadowkeeper, + 1 to counter
-            self.appendShadowkeeper(fromEncounters: encounters)
-            if shadowKeeperEncounters != [] {
-                encounterCounter += 1
-                print(encounterCounter)
-            }
-            // Append fatebreaker, +1 to counter
-            self.appendFatebreaker(fromEncounters: encounters)
-            if fateBreakerEncounters != [] {
-                encounterCounter += 1
-                print(encounterCounter)
-            }
-            // Append eden's promise, +1 to counter
-            self.appendEdensPromise(fromEncounters: encounters)
-            if EdensPromiseEncounters != [] {
-                encounterCounter += 1
-                print(encounterCounter)
-            }
-            // Append oracle of darkness, +1 to counter
-            self.appendOracleOfDarkness(fromEncounters: encounters)
-            if OracleOfDarknessEncounters != [] {
-                encounterCounter += 1
-                print(encounterCounter)
-            }
+            print(encounters)
         }
     }
+    
     /// Player detail Tableview row counter, displays this number of rows
     var encounterCounter = 0
     
