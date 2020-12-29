@@ -66,9 +66,6 @@ class WelcomeScreenViewController: UIViewController {
         }
         // Fetch encounters from api
         fetchEncounters()
-        // Segue
-        
-        
     }
     
     //  MARK: - Methods

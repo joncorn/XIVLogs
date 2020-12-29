@@ -43,8 +43,51 @@ class FFLogsController {
     
     var encounters = [Encounter]() {
         didSet {
+            // reseting counter each time new data is set
+            self.encounterCounter = 0
+            /** Append only cloud of darkness ecounters from `encounters`
+                then add 1 to the `encounterCounter` count
+             */
+            self.appendCloudOfDarkness(fromEncounters: encounters)
+            if cloudOfDarknessEncounters != [] {
+                encounterCounter += 1
+                print(encounterCounter)
+            }
+            // Append shadowkeeper, + 1 to counter
+            self.appendShadowkeeper(fromEncounters: encounters)
+            if shadowKeeperEncounters != [] {
+                encounterCounter += 1
+                print(encounterCounter)
+            }
+            // Append fatebreaker, +1 to counter
+            self.appendFatebreaker(fromEncounters: encounters)
+            if fateBreakerEncounters != [] {
+                encounterCounter += 1
+                print(encounterCounter)
+            }
+            // Append eden's promise, +1 to counter
+            self.appendEdensPromise(fromEncounters: encounters)
+            if EdensPromiseEncounters != [] {
+                encounterCounter += 1
+                print(encounterCounter)
+            }
+            // Append oracle of darkness, +1 to counter
+            self.appendOracleOfDarkness(fromEncounters: encounters)
+            if OracleOfDarknessEncounters != [] {
+                encounterCounter += 1
+                print(encounterCounter)
+            }
         }
     }
+    /// Player detail Tableview row counter, displays this number of rows
+    var encounterCounter = 0
+    
+    /// Eden's Promise (Savage) containers
+    var cloudOfDarknessEncounters = [Encounter]()
+    var shadowKeeperEncounters = [Encounter]()
+    var fateBreakerEncounters = [Encounter]()
+    var EdensPromiseEncounters = [Encounter]()
+    var OracleOfDarknessEncounters = [Encounter]()
     
     let servers = [
         // Aether DC - NA
@@ -140,7 +183,7 @@ class FFLogsController {
                     35,
                     31]
     
-    //  MARK: - Methods
+    //  MARK: - Network Methods
     static func fetchZoneEncounters(name: String, server: String, region: String, zone: String, completion: @escaping (Result<[Encounter], FFLogsError>) -> Void) {
         
         // Build URL with search terms
@@ -250,5 +293,47 @@ class FFLogsController {
                 completion(.failure(.thrownError(error)))
             }
         }.resume()
+    }
+    
+    //  MARK: - Sorting Methods
+    
+    func appendCloudOfDarkness(fromEncounters encounters: [Encounter]) {
+        for e in encounters {
+            if e.encounterName == "Cloud of Darkness" && e.difficulty == 101 {
+                self.cloudOfDarknessEncounters.append(e)
+            }
+        }
+    }
+    
+    func appendShadowkeeper(fromEncounters encounter: [Encounter]) {
+        for e in encounter {
+            if e.encounterName == "Shadowkeeper" && e.difficulty == 101 {
+                self.shadowKeeperEncounters.append(e)
+            }
+        }
+    }
+    
+    func appendFatebreaker(fromEncounters encounter: [Encounter]) {
+        for e in encounter {
+            if e.encounterName == "Fatebreaker" && e.difficulty == 101 {
+                self.fateBreakerEncounters.append(e)
+            }
+        }
+    }
+    
+    func appendEdensPromise(fromEncounters encounter: [Encounter]) {
+        for e in encounter {
+            if e.encounterName == "Eden's Promise" && e.difficulty == 101 {
+                self.EdensPromiseEncounters.append(e)
+            }
+        }
+    }
+    
+    func appendOracleOfDarkness(fromEncounters encounter: [Encounter]) {
+        for e in encounter {
+            if e.encounterName == "Oracle of Darkness" && e.difficulty == 101 {
+                self.OracleOfDarknessEncounters.append(e)
+            }
+        }
     }
 }

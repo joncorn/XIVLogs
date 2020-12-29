@@ -22,3 +22,9 @@ struct Encounter: Decodable {
     let total: Double
     let ilvlKeyOrPatch: Double
 }
+
+extension Encounter: Equatable {
+    static func == (lhs: Encounter, rhs: Encounter) -> Bool {
+        lhs.encounterName == rhs.encounterName && lhs.reportID == rhs.reportID && lhs.fightID == rhs.fightID && lhs.total == rhs.total && lhs.percentile == rhs.percentile
+    }
+}

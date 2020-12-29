@@ -26,6 +26,7 @@ class PlayerDetailViewController: UIViewController {
     //  MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.topParseListTableView.reloadData()
         
         self.playerNameLabel.text = FFLogsController.shared.encounters[0].characterName
         self.playerServerLabel.text = "\(FFLogsController.shared.encounters[0].server) (\(region))"
@@ -56,7 +57,7 @@ class PlayerDetailViewController: UIViewController {
 extension PlayerDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return FFLogsController.shared.encounterCounter
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
