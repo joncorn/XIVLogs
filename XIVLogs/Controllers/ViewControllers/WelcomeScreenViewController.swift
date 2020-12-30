@@ -319,7 +319,35 @@ class WelcomeScreenViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let encounters):
+                    
+                    // Add encounters to singleton array
                     FFLogsController.shared.encounters = encounters
+                    
+                    // If zone is eden's promise, makes sure individual encounter arrays have data
+                    // then append first in array to topparsesofencounters array
+                    if self.zoneSearchTextField.text == "Eden's Promise (Savage)" {
+                        if FFLogsController.shared.cloudOfDarknessEncounters != [] {
+                            FFLogsController.shared.topParsesOfEncounters.append(FFLogsController.shared.cloudOfDarknessEncounters[0])
+                        }
+                        
+                        if FFLogsController.shared.shadowKeeperEncounters != [] {
+                            FFLogsController.shared.topParsesOfEncounters.append(FFLogsController.shared.shadowKeeperEncounters[0])
+                        }
+                        
+                        if FFLogsController.shared.fateBreakerEncounters != [] {
+                            FFLogsController.shared.topParsesOfEncounters.append(FFLogsController.shared.fateBreakerEncounters[0])
+                        }
+                        
+                        if FFLogsController.shared.EdensPromiseEncounters != [] {
+                            FFLogsController.shared.topParsesOfEncounters.append(FFLogsController.shared.EdensPromiseEncounters[0])
+                        }
+                        
+                        if FFLogsController.shared.OracleOfDarknessEncounters != [] {
+                            FFLogsController.shared.topParsesOfEncounters.append(FFLogsController.shared.OracleOfDarknessEncounters[0])
+                        }
+                    }
+                    
+                    print(FFLogsController.shared.topParsesOfEncounters)
                     // Perform segue
                     if FFLogsController.shared.encounters != [] {
                         self.performSegue(withIdentifier: "toPlayerDetail", sender: self)

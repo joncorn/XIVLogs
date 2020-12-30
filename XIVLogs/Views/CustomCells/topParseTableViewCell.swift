@@ -15,6 +15,7 @@ class topParseTableViewCell: UITableViewCell {
     // Labels
     @IBOutlet weak var encounterNameLabel: UILabel!
     @IBOutlet weak var rDPSLabel: UILabel!
+    @IBOutlet weak var rankLabel: UILabel!
     // Parse
     @IBOutlet weak var parseLabel: UILabel!
     @IBOutlet weak var parseSpecImageView: UIImageView!

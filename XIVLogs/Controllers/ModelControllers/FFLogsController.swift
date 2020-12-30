@@ -44,20 +44,28 @@ class FFLogsController {
     /// Holds encounter objects fetched from api
     var encounters = [Encounter]() {
         didSet {
-            print(encounters)
+            
+            topParsesOfEncounters = []
+            
+            appendCloudOfDarkness(fromEncounters: encounters)
+            appendShadowkeeper(fromEncounters: encounters)
+            appendFatebreaker(fromEncounters: encounters)
+            appendEdensPromise(fromEncounters: encounters)
+            appendOracleOfDarkness(fromEncounters: encounters)
+            print(cloudOfDarknessEncounters)
         }
     }
     
-    /// Player detail Tableview row counter, displays this number of rows
-    var encounterCounter = 0
-    
-    /// Eden's Promise (Savage) containers
+    // Eden's Promise (Savage) containers
     var cloudOfDarknessEncounters = [Encounter]()
     var shadowKeeperEncounters = [Encounter]()
     var fateBreakerEncounters = [Encounter]()
     var EdensPromiseEncounters = [Encounter]()
     var OracleOfDarknessEncounters = [Encounter]()
+    // Top parses container
+    var topParsesOfEncounters = [Encounter]()
     
+    // Server List, sorted alphabetically, grouped by datacenter
     let servers = [
         // Aether DC - NA
         "Adamantoise",
