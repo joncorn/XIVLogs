@@ -46,6 +46,11 @@ class FFLogsController {
         didSet {
             
             topParsesOfEncounters = []
+            cloudOfDarknessEncounters = []
+            shadowKeeperEncounters = []
+            fateBreakerEncounters = []
+            EdensPromiseEncounters = []
+            OracleOfDarknessEncounters = []
             
             appendCloudOfDarkness(fromEncounters: encounters)
             appendShadowkeeper(fromEncounters: encounters)

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit.UIImage
 
-class CharacterController {
+class XivApiController {
     
     //  MARK: - Strings
     // API Key
@@ -37,7 +37,7 @@ class CharacterController {
             do {
                 let decoder = JSONDecoder()
                 let characters = try decoder.decode(TopLevelDictionary.Character.self, from: data)
-                completion(.success(characters))
+                return completion(.success(characters))
             } catch {
                 print(error, error.localizedDescription)
                 return completion(.failure(.thrownError(error)))
@@ -46,16 +46,16 @@ class CharacterController {
     }
     
     static func fetchAvatar(for character: TopLevelDictionary.Character, completion: @escaping (Result<UIImage, CharacterError>) -> Void) {
-        let url = character.avatar
-        print(url)
+        
+        guard let url = URL(string: character.avatar) else {return completion(.failure(.invalidURL))}
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             if let error = error {
                 print(error, error.localizedDescription)
                 return completion(.failure(.thrownError(error)))
             }
             guard let data = data else {return completion(.failure(.noData))}
-            guard let avatar = UIImage(data: data) else {return completion(.failure(.unableToDecode))}
-            completion(.success(avatar))
-        }.resume()
+            guard let playerAvatar = UIImage(data: data) else {return completion(.failure(.noData))}
+            return completion(.success(playerAvatar))
+        }
     }
 }

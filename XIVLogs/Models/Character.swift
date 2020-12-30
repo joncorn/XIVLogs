@@ -15,7 +15,7 @@ struct TopLevelDictionary: Decodable {
     }
     
     struct Character: Decodable {
-        let avatar: URL
+        let avatar: String
         let name: String
         let server: String
         
