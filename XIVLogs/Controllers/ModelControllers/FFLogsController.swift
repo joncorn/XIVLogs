@@ -41,11 +41,36 @@ class FFLogsController {
     // Singleton
     static let shared = FFLogsController()
     
+    /// Holds encounter objects fetched from api
     var encounters = [Encounter]() {
         didSet {
+            
+            topParsesOfEncounters = []
+            cloudOfDarknessEncounters = []
+            shadowKeeperEncounters = []
+            fateBreakerEncounters = []
+            EdensPromiseEncounters = []
+            OracleOfDarknessEncounters = []
+            
+            appendCloudOfDarkness(fromEncounters: encounters)
+            appendShadowkeeper(fromEncounters: encounters)
+            appendFatebreaker(fromEncounters: encounters)
+            appendEdensPromise(fromEncounters: encounters)
+            appendOracleOfDarkness(fromEncounters: encounters)
+            print(cloudOfDarknessEncounters)
         }
     }
     
+    // Eden's Promise (Savage) containers
+    var cloudOfDarknessEncounters = [Encounter]()
+    var shadowKeeperEncounters = [Encounter]()
+    var fateBreakerEncounters = [Encounter]()
+    var EdensPromiseEncounters = [Encounter]()
+    var OracleOfDarknessEncounters = [Encounter]()
+    // Top parses container
+    var topParsesOfEncounters = [Encounter]()
+    
+    // Server List, sorted alphabetically, grouped by datacenter
     let servers = [
         // Aether DC - NA
         "Adamantoise",
@@ -122,9 +147,9 @@ class FFLogsController {
         "Shinryu",
         "Titan"]
     
-    let regions = ["EU",
-                   "JP",
-                   "NA"]
+    let regions = ["NA",
+                   "EU",
+                   "JP"]
     
     let zoneStrings = ["Eden's Promise (Savage)",
                  "Eden's Verse (Savage)",
@@ -140,7 +165,7 @@ class FFLogsController {
                     35,
                     31]
     
-    //  MARK: - Methods
+    //  MARK: - Network Methods
     static func fetchZoneEncounters(name: String, server: String, region: String, zone: String, completion: @escaping (Result<[Encounter], FFLogsError>) -> Void) {
         
         // Build URL with search terms
@@ -250,5 +275,47 @@ class FFLogsController {
                 completion(.failure(.thrownError(error)))
             }
         }.resume()
+    }
+    
+    //  MARK: - Sorting Methods
+    
+    func appendCloudOfDarkness(fromEncounters encounters: [Encounter]) {
+        for e in encounters {
+            if e.encounterName == "Cloud of Darkness" && e.difficulty == 101 {
+                self.cloudOfDarknessEncounters.append(e)
+            }
+        }
+    }
+    
+    func appendShadowkeeper(fromEncounters encounter: [Encounter]) {
+        for e in encounter {
+            if e.encounterName == "Shadowkeeper" && e.difficulty == 101 {
+                self.shadowKeeperEncounters.append(e)
+            }
+        }
+    }
+    
+    func appendFatebreaker(fromEncounters encounter: [Encounter]) {
+        for e in encounter {
+            if e.encounterName == "Fatebreaker" && e.difficulty == 101 {
+                self.fateBreakerEncounters.append(e)
+            }
+        }
+    }
+    
+    func appendEdensPromise(fromEncounters encounter: [Encounter]) {
+        for e in encounter {
+            if e.encounterName == "Eden's Promise" && e.difficulty == 101 {
+                self.EdensPromiseEncounters.append(e)
+            }
+        }
+    }
+    
+    func appendOracleOfDarkness(fromEncounters encounter: [Encounter]) {
+        for e in encounter {
+            if e.encounterName == "Oracle of Darkness" && e.difficulty == 101 {
+                self.OracleOfDarknessEncounters.append(e)
+            }
+        }
     }
 }

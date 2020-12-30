@@ -51,6 +51,16 @@ struct StyleGuide {
     
     //  MARK: - Rounded Corners
     static func roundCorners(_ view: UIView) {
-        view.layer.cornerRadius = 5
+        view.layer.cornerRadius = 3
+    }
+    
+    //  MARK: - Drop Shadow
+    static func addDropShadowToView(_ view: UIView) {
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 1
+        view.layer.shadowOffset = .zero
+        view.layer.shadowRadius = 2
+        view.layer.shadowPath = UIBezierPath(rect: view.bounds).cgPath
+        view.layer.shouldRasterize = true
     }
 }

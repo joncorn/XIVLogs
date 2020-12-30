@@ -21,7 +21,7 @@ extension UIColor {
     
     //  MARK: - Aetheryte Dark Blue
     class var XIVLogsAetheryteDarkBlue: UIColor {
-        return UIColor(red: 159.0/255.0, green: 211.0/255.0, blue: 221.0/255.0, alpha: 1.0)
+        return UIColor(red: 23.0/255.0, green: 142.0/255.0, blue: 172.0/255.0, alpha: 1.0)
     }
     
     //  MARK: - EncounterName Blue

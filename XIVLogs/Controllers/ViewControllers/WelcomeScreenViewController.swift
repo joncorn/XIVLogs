@@ -42,7 +42,6 @@ class WelcomeScreenViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupPickerViews()
-        
         /// Tap gesture to dismiss keyboard
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -55,6 +54,17 @@ class WelcomeScreenViewController: UIViewController {
     
     //  MARK: - Actions
     @IBAction func searchButtonTapped(_ sender: Any) {
+        // Present alert controller if fields are empty
+        if characterSearchTextField.text == "" {
+            presentNoEntryAlert()
+        } else if serverSearchTextField.text == "" {
+            presentNoEntryAlert()
+        } else if regionSearchTextField.text == "" {
+            presentNoEntryAlert()
+        } else if zoneSearchTextField.text == "" {
+            presentNoEntryAlert()
+        }
+        // Fetch encounters from api
         fetchEncounters()
     }
     
@@ -62,40 +72,65 @@ class WelcomeScreenViewController: UIViewController {
     func setupUI() {
         // Adds bottom line to textfields
         characterSearchTextField.setPadding()
-        characterSearchTextField.setBottomBorderThin()
+        characterSearchTextField.setBottomBorderThick()
         serverSearchTextField.setPadding()
-        serverSearchTextField.setBottomBorderThin()
+        serverSearchTextField.setBottomBorderThick()
         regionSearchTextField.setPadding()
-        regionSearchTextField.setBottomBorderThin()
+        regionSearchTextField.setBottomBorderThick()
         zoneSearchTextField.setPadding()
-        zoneSearchTextField.setBottomBorderThin()
+        zoneSearchTextField.setBottomBorderThick()
         // See-thru navbar
-        transparentNavBar()
+        setupNavBar()
         // Character search toolbar
         setupPlayerNameToolbar()
+        // Search button
+        searchButton.layer.cornerRadius = searchButton.bounds.height / 2
+        searchButton.layer.backgroundColor = UIColor.XIVLogsAetheryteDarkBlue.cgColor
+        searchButton.clipsToBounds = true
     }
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
+    /// Presents alert controller if search fields are empty
+    func presentNoEntryAlert() {
+        let alert = UIAlertController(title: "Please fill in all search fields", message: "Player name, server, region, and zone", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    /// Presents alert controller if no player is found with player name
+    func presentNoPlayerAlert() {
+        let alert = UIAlertController(title: "Player not found!", message: "verify search criteria", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    /// Presents alert controller if player exists but no records come back from server
+    func presentNoRecordsAlert() {
+        let alert = UIAlertController(title: "No logs returned!", message: "User may have logs set to private, or data is unable to be retrieved from the server at this time", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
     func setupPickerViews() {
         // Server PickerView
         serverPicker = serverPickerView()
         serverPicker?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        serverPicker?.backgroundColor = UIColor.XIVLogsAetheryteBlue
-        serverPicker?.data = FFLogsController.shared.servers.sorted()
+        serverPicker?.backgroundColor = UIColor.XIVLogsAetheryteDarkBlue
+        serverPicker?.data = FFLogsController.shared.servers
         serverSearchTextField.inputView = serverPicker
         // Region PickerView
         regionPicker = regionPickerView()
         regionPicker?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        regionPicker?.backgroundColor = UIColor.XIVLogsAetheryteBlue
-        regionPicker?.data = FFLogsController.shared.regions.sorted()
+        regionPicker?.backgroundColor = UIColor.XIVLogsAetheryteDarkBlue
+        regionPicker?.data = FFLogsController.shared.regions
         regionSearchTextField.inputView = regionPicker
         // Zone PickerView
         zonePicker = zonePickerView()
         zonePicker?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        zonePicker?.backgroundColor = UIColor.XIVLogsAetheryteBlue
+        zonePicker?.backgroundColor = UIColor.XIVLogsAetheryteDarkBlue
         zonePicker?.data = FFLogsController.shared.zoneStrings
         zoneSearchTextField.inputView = zonePicker
         // PickerView Toolbars
@@ -108,8 +143,8 @@ class WelcomeScreenViewController: UIViewController {
         let bar = UIToolbar()
         bar.autoresizingMask = .flexibleHeight
         bar.barStyle = .default
-        bar.barTintColor = UIColor.XIVLogsAetheryteBlue
-        bar.backgroundColor = UIColor.XIVLogsAetheryteBlue
+        bar.barTintColor = UIColor.XIVLogsAetheryteDarkBlue
+        bar.backgroundColor = UIColor.XIVLogsAetheryteDarkBlue
         bar.isTranslucent = false
         var frame = bar.frame
         frame.size.height = 44.0
@@ -129,8 +164,8 @@ class WelcomeScreenViewController: UIViewController {
         serverPickerAccessory = UIToolbar()
         serverPickerAccessory?.autoresizingMask = .flexibleHeight
         serverPickerAccessory?.barStyle = .default
-        serverPickerAccessory?.barTintColor = UIColor.XIVLogsAetheryteBlue
-        serverPickerAccessory?.backgroundColor = UIColor.XIVLogsAetheryteBlue
+        serverPickerAccessory?.barTintColor = UIColor.XIVLogsAetheryteDarkBlue
+        serverPickerAccessory?.backgroundColor = UIColor.XIVLogsAetheryteDarkBlue
         serverPickerAccessory?.isTranslucent = false
         var frame = serverPickerAccessory?.frame
         frame?.size.height = 44.0
@@ -153,8 +188,8 @@ class WelcomeScreenViewController: UIViewController {
         regionPickerAccessory = UIToolbar()
         regionPickerAccessory?.autoresizingMask = .flexibleHeight
         regionPickerAccessory?.barStyle = .default
-        regionPickerAccessory?.barTintColor = UIColor.XIVLogsAetheryteBlue
-        regionPickerAccessory?.backgroundColor = UIColor.XIVLogsAetheryteBlue
+        regionPickerAccessory?.barTintColor = UIColor.XIVLogsAetheryteDarkBlue
+        regionPickerAccessory?.backgroundColor = UIColor.XIVLogsAetheryteDarkBlue
         regionPickerAccessory?.isTranslucent = false
         var frame = regionPickerAccessory?.frame
         frame?.size.height = 44.0
@@ -177,8 +212,8 @@ class WelcomeScreenViewController: UIViewController {
         zonePickerAccessory = UIToolbar()
         zonePickerAccessory?.autoresizingMask = .flexibleHeight
         zonePickerAccessory?.barStyle = .default
-        zonePickerAccessory?.barTintColor = UIColor.XIVLogsAetheryteBlue
-        zonePickerAccessory?.backgroundColor = UIColor.XIVLogsAetheryteBlue
+        zonePickerAccessory?.barTintColor = UIColor.XIVLogsAetheryteDarkBlue
+        zonePickerAccessory?.backgroundColor = UIColor.XIVLogsAetheryteDarkBlue
         zonePickerAccessory?.isTranslucent = false
         var frame = zonePickerAccessory?.frame
         frame?.size.height = 44.0
@@ -240,17 +275,17 @@ class WelcomeScreenViewController: UIViewController {
     }
     
     func clearTextFields() {
-        characterSearchTextField.text = ""
-        serverSearchTextField.text = ""
-        regionSearchTextField.text = ""
         zoneSearchTextField.text = ""
     }
     
-    func transparentNavBar() {
+    func setupNavBar() {
+        /// Transparent NavBar
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.barStyle = .black
+        /// Changes NavBar tint
+        self.navigationController?.navigationBar.tintColor = UIColor.XIVLogsAetheryteDarkBlue
     }
     
     /// Fetch encounters with text field data
@@ -284,9 +319,45 @@ class WelcomeScreenViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let encounters):
+                    
+                    // Add encounters to singleton array
                     FFLogsController.shared.encounters = encounters
+                    
+                    // If zone is eden's promise, makes sure individual encounter arrays have data
+                    // then append first in array to topparsesofencounters array
+                    if self.zoneSearchTextField.text == "Eden's Promise (Savage)" {
+                        if FFLogsController.shared.cloudOfDarknessEncounters != [] {
+                            FFLogsController.shared.topParsesOfEncounters.append(FFLogsController.shared.cloudOfDarknessEncounters[0])
+                        }
+                        
+                        if FFLogsController.shared.shadowKeeperEncounters != [] {
+                            FFLogsController.shared.topParsesOfEncounters.append(FFLogsController.shared.shadowKeeperEncounters[0])
+                        }
+                        
+                        if FFLogsController.shared.fateBreakerEncounters != [] {
+                            FFLogsController.shared.topParsesOfEncounters.append(FFLogsController.shared.fateBreakerEncounters[0])
+                        }
+                        
+                        if FFLogsController.shared.EdensPromiseEncounters != [] {
+                            FFLogsController.shared.topParsesOfEncounters.append(FFLogsController.shared.EdensPromiseEncounters[0])
+                        }
+                        
+                        if FFLogsController.shared.OracleOfDarknessEncounters != [] {
+                            FFLogsController.shared.topParsesOfEncounters.append(FFLogsController.shared.OracleOfDarknessEncounters[0])
+                        }
+                    }
+                    
+                    print(FFLogsController.shared.topParsesOfEncounters)
+                    // Perform segue
+                    if FFLogsController.shared.encounters != [] {
+                        self.performSegue(withIdentifier: "toPlayerDetail", sender: self)
+                    } else {
+                        self.presentNoRecordsAlert()
+                    }
                 case .failure(let error):
                     print(error, error.localizedDescription)
+                    // Present action sheet
+                    self.presentNoPlayerAlert()
                 }
             }
         }
@@ -302,6 +373,7 @@ class WelcomeScreenViewController: UIViewController {
             // this is where you send data, 'destinationvc.entrylanding = entry'
             //vc.property = value
             vc?.encounterTier = zone
+            vc?.region = region
         }
     }
 }
