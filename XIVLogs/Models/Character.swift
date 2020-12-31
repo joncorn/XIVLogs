@@ -8,21 +8,24 @@
 import Foundation
 
 struct TopLevelDictionary: Decodable {
-    let character: Character
+    let results: [PlayerResult]
     
     enum CodingKeys: String, CodingKey {
-        case character = "Character"
+        case results = "Results"
     }
     
-    struct Character: Decodable {
-        let avatar: String
-        let name: String
-        let server: String
-        
-        enum CodingKeys: String, CodingKey {
-            case avatar = "Avatar"
-            case name = "Name"
-            case server = "Sever"
-        }
+}
+
+struct PlayerResult: Decodable {
+    let avatar: URL?
+    
+    enum CodingKeys: String, CodingKey {
+        case avatar = "Avatar"
+    }
+}
+
+extension PlayerResult: Equatable {
+    static func == (lhs: PlayerResult, rhs: PlayerResult) -> Bool {
+        lhs.avatar == rhs.avatar
     }
 }

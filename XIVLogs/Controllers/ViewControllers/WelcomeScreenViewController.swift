@@ -21,6 +21,21 @@ class WelcomeScreenViewController: UIViewController {
     var regionPickerAccessory: UIToolbar?
     var zonePickerAccessory: UIToolbar?
     
+    /// Playersearch data
+//    var playerResults = [PlayerResult]() {
+//        didSet {
+//            if self.playerResults != [] {
+//                fetchAvatar()
+//                if FFLogsController.shared.encounters != [] {
+//                    self.performSegue(withIdentifier: "toPlayerDetail", sender: self)
+//                    
+//                } else {
+//                    self.presentNoRecordsAlert()
+//                }
+//            }
+//        }
+//    }
+    
     //  MARK: - Outlets
     // Logo image
     @IBOutlet weak var logoImageView: UIImageView!
@@ -288,6 +303,21 @@ class WelcomeScreenViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.XIVLogsAetheryteDarkBlue
     }
     
+//    func fetchAvatar() {
+//        let results = self.playerResults
+//        XivApiController.fetchAvatar(for: results[0]) { (result) in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let image):
+//                    print("yes image")
+//                    XivApiController.shared.playerAvatar = image
+//                case .failure(let error):
+//                    print(error, "no image")
+//                }
+//            }
+//        }
+//    }
+    
     /// Fetch encounters with text field data
     func fetchEncounters() {
         // Make sure text fields have values
@@ -295,6 +325,20 @@ class WelcomeScreenViewController: UIViewController {
               let server = serverSearchTextField.text, !server.isEmpty,
               let region = regionSearchTextField.text, !region.isEmpty,
               let zone = zoneSearchTextField.text, !zone.isEmpty else { return }
+        
+        XivApiController.shared.playerAvatar = nil
+        
+//        XivApiController.searchCharacter(withName: name, withServer: server) { (result) in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let results):
+//                    print("got results")
+//                    self.playerResults = results
+//                case .failure(let error):
+//                    print(error, "no results")
+//                }
+//            }
+//        }
         
         // Associate zone string with corresponding int
         var zoneIDString: String = "38"
@@ -351,6 +395,7 @@ class WelcomeScreenViewController: UIViewController {
                     // Perform segue
                     if FFLogsController.shared.encounters != [] {
                         self.performSegue(withIdentifier: "toPlayerDetail", sender: self)
+
                     } else {
                         self.presentNoRecordsAlert()
                     }

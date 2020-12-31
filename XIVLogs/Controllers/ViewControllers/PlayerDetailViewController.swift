@@ -12,6 +12,24 @@ class PlayerDetailViewController: UIViewController {
     //  MARK: - Properties
     var encounterTier: String?
     var region: String = "Hydaelyn"
+    var playerResults = [PlayerResult]() {
+        didSet {
+            if self.playerResults != [] {
+                XivApiController.fetchAvatar(for: playerResults[0]) { (result) in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success(let image):
+                            self.playerAvatarImageView.image = image
+                            print("got image")
+                        case .failure(let error):
+                            print(error, error.localizedDescription)
+                            print("no image")
+                        }
+                    }
+                }
+            }
+        }
+    }
     
     
     //  MARK: - Outlets
@@ -82,11 +100,15 @@ class PlayerDetailViewController: UIViewController {
         
         setupUI()
         revealSubviews()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        fetchPlayerResults()
     }
     
     //  MARK: - Actions
-  
+    
     
     
     //  MARK: - Methods
@@ -96,6 +118,7 @@ class PlayerDetailViewController: UIViewController {
     }
     
     func setupViews() {
+        StyleGuide.roundCorners(playerAvatarImageView)
         // Set all five subviews alpha to 0
         setFiveSubviewsAlphaTo(0.0)
         // First
@@ -118,11 +141,72 @@ class PlayerDetailViewController: UIViewController {
         StyleGuide.roundCorners(fifthEncounterView)
         StyleGuide.roundCorners(fifthEncounterImageView)
         StyleGuide.roundCorners(fifthParseView)
-    }
-    
-    func updateViews() {
         
     }
+    
+    func fetchPlayerResults() {
+        let name = FFLogsController.shared.encounters[0].characterName
+        let server = FFLogsController.shared.encounters[0].server
+        XivApiController.searchCharacter(withName: name, withServer: server) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let results):
+                    self.playerResults = results
+                    print("got player info")
+                case .failure(let error):
+                    print(error, error.localizedDescription)
+                    print("didn't get player info")
+                }
+            }
+        }
+    }
+    
+    //    func fetchAvatar() {
+    //        guard let character = self.character else { return }
+    //        XivApiController.fetchAvatar(for: character) { (result) in
+    //            DispatchQueue.main.async {
+    //                switch result {
+    //                case .success(let image):
+    //                    self.playerAvatarImageView.image = image
+    //                    print("image fetched")
+    //                case .failure(let error):
+    //                    print(error, error.localizedDescription)
+    //                    print("image not fetched")
+    //                }
+    //            }
+    //        }
+    //    }
+    
+    //    func fetchCharacter() {
+    //        let id = 2493998
+    //        XivApiController.fetchCharacter(with: id) { (result) in
+    //            DispatchQueue.main.async {
+    //                switch result {
+    //                case .success(let character):
+    //                    self.character = character
+    //                    print("character fetched")
+    //                case .failure(let error):
+    //                    print(error, error.localizedDescription)
+    //                    print("Character not fetched")
+    //                }
+    //            }
+    //        }
+    //    }
+    
+    //    func updateAvatar() {
+    //        XivApiController.fetchAvatar(for: XivApiController.shared.playerResults[0]) { (result) in
+    //            DispatchQueue.main.async {
+    //                switch result {
+    //                case .success(let image):
+    //                    self.playerAvatarImageView.image = image
+    //                    print("got image")
+    //                case .failure(let error):
+    //                    print(error, error.localizedDescription)
+    //                    print("no image")
+    //                }
+    //            }
+    //        }
+    //    }
     
     func parse(_ parse: [Encounter], index: Int) -> Int {
         return Int(parse[index].percentile)

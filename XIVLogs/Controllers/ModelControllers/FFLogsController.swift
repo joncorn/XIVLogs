@@ -45,6 +45,7 @@ class FFLogsController {
     var encounters = [Encounter]() {
         didSet {
             
+            
             topParsesOfEncounters = []
             cloudOfDarknessEncounters = []
             shadowKeeperEncounters = []
@@ -276,6 +277,9 @@ class FFLogsController {
             }
         }.resume()
     }
+    
+    //  MARK: - Methods
+    
     
     //  MARK: - Sorting Methods
     
