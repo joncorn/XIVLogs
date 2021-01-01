@@ -173,7 +173,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="813p-operated" translatesAutoresizingMaskIntoConstraints="NO" id="Ufx-rr-FNV">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Astrologian" translatesAutoresizingMaskIntoConstraints="NO" id="Ufx-rr-FNV">
                                 <rect key="frame" x="20" y="106" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Ufx-rr-FNV" secondAttribute="height" multiplier="1:1" id="80r-Oe-ckW"/>
@@ -1187,7 +1187,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="813p-operated" width="100" height="100"/>
+        <image name="Astrologian" width="32" height="31"/>
         <image name="aetheryteIcon" width="262" height="430"/>
         <image name="cloudOfDarkness" width="100" height="100"/>
         <image name="edensPromise" width="100" height="100"/>

@@ -8,6 +8,12 @@
 import Foundation
 import UIKit.UIImage
 
+//  MARK: - PlayerDetailProtocol
+protocol XivApiControllerDelegate: class {
+    func setPlayerAvatar(_ sender: XivApiController)
+}
+
+//  MARK: - XivApiController class
 class XivApiController {
     
     //  MARK: - Strings
@@ -24,9 +30,32 @@ class XivApiController {
         
     //  MARK: - Properties
     static let shared = XivApiController()
-    var playerAvatar: UIImage?
+    weak var delegate: XivApiControllerDelegate?
     
-    
+    var playerResults = [PlayerResult]() {
+        didSet {
+            if playerResults != [] {
+                fetchAvatar(for: playerResults[0]) { (result) in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success(let image):
+                            print("got image")
+                            self.playerAvatar = image
+                        case .failure(let error):
+                            print(error, error.localizedDescription)
+                            print("no image")
+                        }
+                    }
+                }
+            }
+        }
+    }
+    var playerAvatar: UIImage? {
+        didSet {
+            delegate?.setPlayerAvatar(self)
+        }
+    }
+
     //  MARK: - Methods
     static func searchCharacter(withName name: String, withServer server: String, completion: @escaping (Result<[PlayerResult], CharacterError>) -> Void) {
         guard let baseURL = baseURL else {return completion(.failure(.invalidURL))}
@@ -81,7 +110,7 @@ class XivApiController {
 //        }.resume()
 //    }
     
-    static func fetchAvatar(for character: PlayerResult, completion: @escaping (Result<UIImage, CharacterError>) -> Void) {
+    func fetchAvatar(for character: PlayerResult, completion: @escaping (Result<UIImage, CharacterError>) -> Void) {
         guard let url = character.avatar else {return completion(.failure(.invalidURL))}
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             if let error = error {

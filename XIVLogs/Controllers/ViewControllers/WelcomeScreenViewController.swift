@@ -87,13 +87,13 @@ class WelcomeScreenViewController: UIViewController {
     func setupUI() {
         // Adds bottom line to textfields
         characterSearchTextField.setPadding()
-        characterSearchTextField.setBottomBorderThick()
+        characterSearchTextField.setBottomBorderThin()
         serverSearchTextField.setPadding()
-        serverSearchTextField.setBottomBorderThick()
+        serverSearchTextField.setBottomBorderThin()
         regionSearchTextField.setPadding()
-        regionSearchTextField.setBottomBorderThick()
+        regionSearchTextField.setBottomBorderThin()
         zoneSearchTextField.setPadding()
-        zoneSearchTextField.setBottomBorderThick()
+        zoneSearchTextField.setBottomBorderThin()
         // See-thru navbar
         setupNavBar()
         // Character search toolbar
@@ -328,17 +328,17 @@ class WelcomeScreenViewController: UIViewController {
         
         XivApiController.shared.playerAvatar = nil
         
-//        XivApiController.searchCharacter(withName: name, withServer: server) { (result) in
-//            DispatchQueue.main.async {
-//                switch result {
-//                case .success(let results):
-//                    print("got results")
-//                    self.playerResults = results
-//                case .failure(let error):
-//                    print(error, "no results")
-//                }
-//            }
-//        }
+        XivApiController.searchCharacter(withName: name, withServer: server) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let results):
+                    print("got results")
+                    XivApiController.shared.playerResults = results
+                case .failure(let error):
+                    print(error, "no results")
+                }
+            }
+        }
         
         // Associate zone string with corresponding int
         var zoneIDString: String = "38"
@@ -394,7 +394,10 @@ class WelcomeScreenViewController: UIViewController {
                     print(FFLogsController.shared.topParsesOfEncounters)
                     // Perform segue
                     if FFLogsController.shared.encounters != [] {
-                        self.performSegue(withIdentifier: "toPlayerDetail", sender: self)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+                          self.performSegue(withIdentifier: "toPlayerDetail", sender: self)
+                        }
+//                        self.performSegue(withIdentifier: "toPlayerDetail", sender: self)
 
                     } else {
                         self.presentNoRecordsAlert()

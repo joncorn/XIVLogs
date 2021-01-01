@@ -12,24 +12,24 @@ class PlayerDetailViewController: UIViewController {
     //  MARK: - Properties
     var encounterTier: String?
     var region: String = "Hydaelyn"
-    var playerResults = [PlayerResult]() {
-        didSet {
-            if self.playerResults != [] {
-                XivApiController.fetchAvatar(for: playerResults[0]) { (result) in
-                    DispatchQueue.main.async {
-                        switch result {
-                        case .success(let image):
-                            self.playerAvatarImageView.image = image
-                            print("got image")
-                        case .failure(let error):
-                            print(error, error.localizedDescription)
-                            print("no image")
-                        }
-                    }
-                }
-            }
-        }
-    }
+//    var playerResults = [PlayerResult]() {
+//        didSet {
+//            if self.playerResults != [] {
+//                XivApiController.fetchAvatar(for: playerResults[0]) { (result) in
+//                    DispatchQueue.main.async {
+//                        switch result {
+//                        case .success(let image):
+//                            self.playerAvatarImageView.image = image
+//                            print("got image")
+//                        case .failure(let error):
+//                            print(error, error.localizedDescription)
+//                            print("no image")
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
     
     
     //  MARK: - Outlets
@@ -98,13 +98,15 @@ class PlayerDetailViewController: UIViewController {
         self.playerServerLabel.text = "\(FFLogsController.shared.encounters[0].server) (\(region))"
         self.zoneNameLabel.text = encounterTier
         
+        XivApiController.shared.delegate = self
+        
         setupUI()
         revealSubviews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        fetchPlayerResults()
+//        fetchPlayerResults()
     }
     
     //  MARK: - Actions
@@ -144,22 +146,22 @@ class PlayerDetailViewController: UIViewController {
         
     }
     
-    func fetchPlayerResults() {
-        let name = FFLogsController.shared.encounters[0].characterName
-        let server = FFLogsController.shared.encounters[0].server
-        XivApiController.searchCharacter(withName: name, withServer: server) { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let results):
-                    self.playerResults = results
-                    print("got player info")
-                case .failure(let error):
-                    print(error, error.localizedDescription)
-                    print("didn't get player info")
-                }
-            }
-        }
-    }
+//    func fetchPlayerResults() {
+//        let name = FFLogsController.shared.encounters[0].characterName
+//        let server = FFLogsController.shared.encounters[0].server
+//        XivApiController.searchCharacter(withName: name, withServer: server) { (result) in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let results):
+//                    self.playerResults = results
+//                    print("got player info")
+//                case .failure(let error):
+//                    print(error, error.localizedDescription)
+//                    print("didn't get player info")
+//                }
+//            }
+//        }
+//    }
     
     //    func fetchAvatar() {
     //        guard let character = self.character else { return }
@@ -383,4 +385,9 @@ class PlayerDetailViewController: UIViewController {
     
 }
 
-
+//  MARK: - XiVApiControllerDelegate
+extension PlayerDetailViewController: XivApiControllerDelegate {
+    func setPlayerAvatar(_ sender: XivApiController) {
+        self.playerAvatarImageView.image = XivApiController.shared.playerAvatar
+    }
+}
