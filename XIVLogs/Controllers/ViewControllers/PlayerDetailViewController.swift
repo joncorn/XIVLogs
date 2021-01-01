@@ -94,6 +94,7 @@ class PlayerDetailViewController: UIViewController {
     //  MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setDefaultAvatar()
         self.playerNameLabel.text = FFLogsController.shared.encounters[0].characterName
         self.playerServerLabel.text = "\(FFLogsController.shared.encounters[0].server) (\(region))"
         self.zoneNameLabel.text = encounterTier
@@ -109,9 +110,42 @@ class PlayerDetailViewController: UIViewController {
 //        fetchPlayerResults()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        print(FFLogsController.shared.cloudOfDarknessEncounters)
+    }
+    
     //  MARK: - Actions
+    @IBAction func firstEncounterTapped(_ sender: Any) {
+        print("tapped")
+        if self.firstEncounterArrowImageView.alpha == 1 {
+            performSegue(withIdentifier: "toEncounterDetail", sender: self)
+        }
+    }
     
+    @IBAction func secondEncounterTapped(_ sender: Any) {
+        if self.secondEncounterArrowImageView.alpha == 1 {
+            performSegue(withIdentifier: "toEncounterDetail", sender: self)
+        }
+    }
     
+    @IBAction func thirdEncounterTapped(_ sender: Any) {
+        if self.thirdEncounterArrowImageView.alpha == 1 {
+            performSegue(withIdentifier: "toEncounterDetail", sender: self)
+        }
+    }
+    
+    @IBAction func fourthEncounterTapped(_ sender: Any) {
+        if self.fourthEncounterArrowImageView.alpha == 1 {
+            performSegue(withIdentifier: "toEncounterDetail", sender: self)
+        }
+    }
+    
+    @IBAction func fifthEncounterTapped(_ sender: Any) {
+        if self.fifthEncounterArrowImageView.alpha == 1 {
+            performSegue(withIdentifier: "toEncounterDetail", sender: self)
+        }
+    }
     
     //  MARK: - Methods
     func setupUI() {
@@ -144,6 +178,49 @@ class PlayerDetailViewController: UIViewController {
         StyleGuide.roundCorners(fifthEncounterImageView)
         StyleGuide.roundCorners(fifthParseView)
         
+    }
+    
+    func setDefaultAvatar() {
+
+        let spec = FFLogsController.shared.topParsesOfEncounters[0].spec
+
+        if spec == "Bard" {
+            self.playerAvatarImageView.image = UIImage(named: "BRD")
+        } else if spec == "Dragoon" {
+            self.playerAvatarImageView.image = UIImage(named: "DRG")
+        } else if spec == "Monk" {
+            self.playerAvatarImageView.image = UIImage(named: "MNK")
+        } else if spec == "Paladin" {
+            self.playerAvatarImageView.image = UIImage(named: "PLD")
+        } else if spec == "Warrior" {
+            self.playerAvatarImageView.image = UIImage(named: "WAR")
+        } else if spec == "Black Mage" {
+            self.playerAvatarImageView.image = UIImage(named: "BLM")
+        } else if spec == "White Mage" {
+            self.playerAvatarImageView.image = UIImage(named: "WHM")
+        } else if spec == "Scholar" {
+            self.playerAvatarImageView.image = UIImage(named: "SCH")
+        } else if spec == "Summoner" {
+            self.playerAvatarImageView.image = UIImage(named: "SMN")
+        } else if spec == "Ninja" {
+            self.playerAvatarImageView.image = UIImage(named: "NIN")
+        } else if spec == "Astrologian" {
+            self.playerAvatarImageView.image = UIImage(named: "AST")
+        } else if spec == "Dark Knight" {
+            self.playerAvatarImageView.image = UIImage(named: "DRK")
+        } else if spec == "Machinist" {
+            self.playerAvatarImageView.image = UIImage(named: "MCH")
+        } else if spec == "Red Mage" {
+            self.playerAvatarImageView.image = UIImage(named: "RDM")
+        } else if spec == "Samurai" {
+            self.playerAvatarImageView.image = UIImage(named: "SAM")
+        } else if spec == "Blue Mage" {
+            self.playerAvatarImageView.image = UIImage(named: "BLU")
+        } else if spec == "Gunbreaker" {
+            self.playerAvatarImageView.image = UIImage(named: "GNB")
+        } else if spec == "Dancer" {
+            self.playerAvatarImageView.image = UIImage(named: "DNC")
+        }
     }
     
 //    func fetchPlayerResults() {
@@ -296,6 +373,76 @@ class PlayerDetailViewController: UIViewController {
             
         } else if encounterTier == "Eden's Verse (Savage)" {
             setFourSubviewsAlphaTo(1)
+//            if parses.indices.contains(0) {
+//                // Populate first row
+//                firstEncounterImageView.image = UIImage(named: parses[0].encounterName)
+//                firstEncounterNameLabel.text = parses[0].encounterName
+//                firstEncounterNameLabel.textColor = .XIVLogsEncounterNameBlue
+//                firstEncounterDPSLabel.text = rDPSFormatter(parses[0].total)
+//                firstEncounterDPSLabel.textColor = .XIVLogsrDPSPurple
+//                colorParse(parse: parse(parses, index: 0), parseLabel: firstParseLabel)
+//                firstParseSpecImageView.image = UIImage(named: parses[0].spec)
+//                firstParseRankLabel.text = "\(parses[0].rank) / \(parses[0].outOf)"
+//                
+//            } else {
+//                firstEncounterArrowImageView.alpha = 0
+//            }
+//            
+//            if parses.indices.contains(1) {
+//                // Populated second row
+//                secondEncounterImageView.image = UIImage(named: parses[1].encounterName)
+//                secondEncounterNameLabel.text = parses[1].encounterName
+//                secondEncounterNameLabel.textColor = .XIVLogsEncounterNameBlue
+//                secondEncounterDPSLabel.text = rDPSFormatter(parses[1].total)
+//                secondEncounterDPSLabel.textColor = .XIVLogsrDPSPurple
+//                secondParseSpecImageView.image = UIImage(named: parses[1].spec)
+//                secondParseRankLabel.text = "\(parses[1].rank) / \(parses[1].outOf)"
+//                colorParse(parse: parse(parses, index: 1), parseLabel: secondParseLabel)
+//            } else {
+//                secondEncounterArrowImageView.alpha = 0
+//            }
+//            
+//            if parses.indices.contains(2) {
+//                // Populated third row
+//                thirdEncounterImageView.image = UIImage(named: parses[2].encounterName)
+//                thirdEncounterNameLabel.text = parses[2].encounterName
+//                thirdEncounterNameLabel.textColor = .XIVLogsEncounterNameBlue
+//                thirdEncounterDPSLabel.text = rDPSFormatter(parses[2].total)
+//                thirdEncounterDPSLabel.textColor = .XIVLogsrDPSPurple
+//                thirdParseSpecImageView.image = UIImage(named: parses[2].spec)
+//                thirdParseRankLabel.text = "\(parses[2].rank) / \(parses[2].outOf)"
+//                colorParse(parse: parse(parses, index: 2), parseLabel: thirdParseLabel)
+//            } else {
+//                thirdEncounterArrowImageView.alpha = 0
+//            }
+//            
+//            if parses.indices.contains(3) {
+//                // Populate 4th row
+//                fourthEncounterImageView.image = UIImage(named: parses[3].encounterName)
+//                fourthEncounterNameLabel.text = parses[3].encounterName
+//                fourthEncounterNameLabel.textColor = .XIVLogsEncounterNameBlue
+//                fourthEncounterDPSLabel.text = rDPSFormatter(parses[3].total)
+//                fourthEncounterDPSLabel.textColor = .XIVLogsrDPSPurple
+//                fourthParseSpecImageView.image = UIImage(named: parses[3].spec)
+//                fourthParseRankLabel.text = "\(parses[3].rank) / \(parses[3].outOf)"
+//                colorParse(parse: parse(parses, index: 3), parseLabel: fourthParseLabel)
+//            } else {
+//                fourthEncounterArrowImageView.alpha = 0
+//            }
+//            
+//            if parses.indices.contains(4) {
+//                // Populate 5th row
+//                fifthEncounterImageView.image = UIImage(named: parses[4].encounterName)
+//                fifthEncounterNameLabel.text = parses[4].encounterName
+//                fifthEncounterNameLabel.textColor = .XIVLogsEncounterNameBlue
+//                fifthEncounterDPSLabel.text = rDPSFormatter(parses[4].total)
+//                fifthEncounterDPSLabel.textColor = .XIVLogsrDPSPurple
+//                fifthParseSpecImageView.image = UIImage(named: parses[4].spec)
+//                fifthParseRankLabel.text = "\(parses[4].rank) / \(parses[4].outOf)"
+//                colorParse(parse: parse(parses, index: 4), parseLabel: fifthParseLabel)
+//            } else {
+//                fifthEncounterArrowImageView.alpha = 0
+//            }
         } else if encounterTier == "Trials II" {
             setFourSubviewsAlphaTo(1)
         } else if encounterTier == "Puppet's Bunker" {
@@ -305,7 +452,83 @@ class PlayerDetailViewController: UIViewController {
         } else if encounterTier == "Trials III" {
             setTwoSubviewsAlphaTo(1)
         }
+        print("past alpha sets")
+        // If topParse array contains something, set parse label - else hide arrow
+      
     }
+    
+//    func addDataToSubviews() {
+//        if parses.indices.contains(0) {
+//            // Populate first row
+//            firstEncounterImageView.image = UIImage(named: parses[0].encounterName)
+//            firstEncounterNameLabel.text = parses[0].encounterName
+//            firstEncounterNameLabel.textColor = .XIVLogsEncounterNameBlue
+//            firstEncounterDPSLabel.text = rDPSFormatter(parses[0].total)
+//            firstEncounterDPSLabel.textColor = .XIVLogsrDPSPurple
+//            colorParse(parse: parse(parses, index: 0), parseLabel: firstParseLabel)
+//            firstParseSpecImageView.image = UIImage(named: parses[0].spec)
+//            firstParseRankLabel.text = "\(parses[0].rank) / \(parses[0].outOf)"
+//
+//        } else {
+//            firstEncounterArrowImageView.alpha = 0
+//        }
+//
+//        if parses.indices.contains(1) {
+//            // Populated second row
+//            secondEncounterImageView.image = UIImage(named: parses[1].encounterName)
+//            secondEncounterNameLabel.text = parses[1].encounterName
+//            secondEncounterNameLabel.textColor = .XIVLogsEncounterNameBlue
+//            secondEncounterDPSLabel.text = rDPSFormatter(parses[1].total)
+//            secondEncounterDPSLabel.textColor = .XIVLogsrDPSPurple
+//            secondParseSpecImageView.image = UIImage(named: parses[1].spec)
+//            secondParseRankLabel.text = "\(parses[1].rank) / \(parses[1].outOf)"
+//            colorParse(parse: parse(parses, index: 1), parseLabel: secondParseLabel)
+//        } else {
+//            secondEncounterArrowImageView.alpha = 0
+//        }
+//
+//        if parses.indices.contains(2) {
+//            // Populated third row
+//            thirdEncounterImageView.image = UIImage(named: parses[2].encounterName)
+//            thirdEncounterNameLabel.text = parses[2].encounterName
+//            thirdEncounterNameLabel.textColor = .XIVLogsEncounterNameBlue
+//            thirdEncounterDPSLabel.text = rDPSFormatter(parses[2].total)
+//            thirdEncounterDPSLabel.textColor = .XIVLogsrDPSPurple
+//            thirdParseSpecImageView.image = UIImage(named: parses[2].spec)
+//            thirdParseRankLabel.text = "\(parses[2].rank) / \(parses[2].outOf)"
+//            colorParse(parse: parse(parses, index: 2), parseLabel: thirdParseLabel)
+//        } else {
+//            thirdEncounterArrowImageView.alpha = 0
+//        }
+//
+//        if parses.indices.contains(3) {
+//            // Populate 4th row
+//            fourthEncounterImageView.image = UIImage(named: parses[3].encounterName)
+//            fourthEncounterNameLabel.text = parses[3].encounterName
+//            fourthEncounterNameLabel.textColor = .XIVLogsEncounterNameBlue
+//            fourthEncounterDPSLabel.text = rDPSFormatter(parses[3].total)
+//            fourthEncounterDPSLabel.textColor = .XIVLogsrDPSPurple
+//            fourthParseSpecImageView.image = UIImage(named: parses[3].spec)
+//            fourthParseRankLabel.text = "\(parses[3].rank) / \(parses[3].outOf)"
+//            colorParse(parse: parse(parses, index: 3), parseLabel: fourthParseLabel)
+//        } else {
+//            fourthEncounterArrowImageView.alpha = 0
+//        }
+//
+//        if parses.indices.contains(4) {
+//            // Populate 5th row
+//            fifthEncounterImageView.image = UIImage(named: parses[4].encounterName)
+//            fifthEncounterNameLabel.text = parses[4].encounterName
+//            fifthEncounterNameLabel.textColor = .XIVLogsEncounterNameBlue
+//            fifthEncounterDPSLabel.text = rDPSFormatter(parses[4].total)
+//            fifthEncounterDPSLabel.textColor = .XIVLogsrDPSPurple
+//            fifthParseSpecImageView.image = UIImage(named: parses[4].spec)
+//            fifthParseRankLabel.text = "\(parses[4].rank) / \(parses[4].outOf)"
+//            colorParse(parse: parse(parses, index: 4), parseLabel: fifthParseLabel)
+//        } else {
+//            fifthEncounterArrowImageView.alpha = 0
+//        }
+//    }
     
     /// Sets 2 subviews' alpha with number
     func setTwoSubviewsAlphaTo(_ alpha: CGFloat) {

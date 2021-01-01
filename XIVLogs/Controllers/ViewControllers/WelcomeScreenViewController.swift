@@ -341,6 +341,7 @@ class WelcomeScreenViewController: UIViewController {
         }
         
         // Associate zone string with corresponding int
+        // 38 just the default value
         var zoneIDString: String = "38"
         if zone == "Eden's Promise (Savage)" {
             zoneIDString = FFLogsStrings.zoneEdensPromiseQueryValue
@@ -355,7 +356,7 @@ class WelcomeScreenViewController: UIViewController {
         } else if zone == "Copied Factory" {
             zoneIDString = FFLogsStrings.zoneCopiedFactoryQueryValue
         }
-        
+        print(zoneIDString)
         // Clear encounter array
         FFLogsController.shared.encounters = []
         // Network call to get zone encounters
@@ -369,36 +370,84 @@ class WelcomeScreenViewController: UIViewController {
                     
                     // If zone is eden's promise, makes sure individual encounter arrays have data
                     // then append first in array to topparsesofencounters array
+                    let cloud = FFLogsController.shared.cloudOfDarknessEncounters
+                    let shadow = FFLogsController.shared.shadowKeeperEncounters
+                    let fate = FFLogsController.shared.fateBreakerEncounters
+                    let eden = FFLogsController.shared.EdensPromiseEncounters
+                    let oracle = FFLogsController.shared.OracleOfDarknessEncounters
                     if self.zoneSearchTextField.text == "Eden's Promise (Savage)" {
-                        if FFLogsController.shared.cloudOfDarknessEncounters != [] {
-                            FFLogsController.shared.topParsesOfEncounters.append(FFLogsController.shared.cloudOfDarknessEncounters[0])
+                        if cloud != [] {
+                            FFLogsController.shared.topParsesOfEncounters.append(cloud[0])
                         }
                         
-                        if FFLogsController.shared.shadowKeeperEncounters != [] {
-                            FFLogsController.shared.topParsesOfEncounters.append(FFLogsController.shared.shadowKeeperEncounters[0])
+                        if shadow != [] {
+                            FFLogsController.shared.topParsesOfEncounters.append(shadow[0])
                         }
                         
-                        if FFLogsController.shared.fateBreakerEncounters != [] {
-                            FFLogsController.shared.topParsesOfEncounters.append(FFLogsController.shared.fateBreakerEncounters[0])
+                        if fate != [] {
+                            FFLogsController.shared.topParsesOfEncounters.append(fate[0])
                         }
                         
-                        if FFLogsController.shared.EdensPromiseEncounters != [] {
-                            FFLogsController.shared.topParsesOfEncounters.append(FFLogsController.shared.EdensPromiseEncounters[0])
+                        if eden != [] {
+                            FFLogsController.shared.topParsesOfEncounters.append(eden[0])
                         }
                         
-                        if FFLogsController.shared.OracleOfDarknessEncounters != [] {
-                            FFLogsController.shared.topParsesOfEncounters.append(FFLogsController.shared.OracleOfDarknessEncounters[0])
+                        if oracle != [] {
+                            FFLogsController.shared.topParsesOfEncounters.append(oracle[0])
                         }
                     }
                     
-                    print(FFLogsController.shared.topParsesOfEncounters)
+//                    // Eden's Verse
+//                    let ramuh = FFLogsController.shared.ramuhEncounters
+//                    let ifritg = FFLogsController.shared.ifritGarudaEncounters
+//                    let idol = FFLogsController.shared.idolOfDarknessEncounters
+//                    let shiva = FFLogsController.shared.shivaEncounters
+//                    if self.zoneSearchTextField.text == "Eden's Verse (Savage)" {
+//                        if ramuh != [] {
+//                            FFLogsController.shared.topParsesOfEncounters.append(ramuh[0])
+//                            print("hi")
+//                        }
+//
+//                        if ifritg != [] {
+//                            FFLogsController.shared.topParsesOfEncounters.append(ifritg[0])
+//                        }
+//
+//                        if idol != [] {
+//                            FFLogsController.shared.topParsesOfEncounters.append(idol[0])
+//                        }
+//
+//                        if shiva != [] {
+//                            FFLogsController.shared.topParsesOfEncounters.append(shiva[0])
+//                        }
+//                    }
+                    
+                    // Trials III
+                    if self.zoneSearchTextField.text == "Trials III" {
+                        
+                    }
+                    
+                    // Trials II
+                    if self.zoneSearchTextField.text == "Trials II" {
+                        
+                    }
+                    
+                    // Puppet's bunker
+                    if self.zoneSearchTextField.text == "Puppet's Bunker" {
+                        
+                    }
+                    
+                    // Copied Factory
+                    if self.zoneSearchTextField.text == "Copied Factory" {
+                        
+                    }
+                    
+                    print(FFLogsController.shared.topParsesOfEncounters, "above is topparses contents")
                     // Perform segue
                     if FFLogsController.shared.encounters != [] {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-                          self.performSegue(withIdentifier: "toPlayerDetail", sender: self)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            self.performSegue(withIdentifier: "toPlayerDetail", sender: self)
                         }
-//                        self.performSegue(withIdentifier: "toPlayerDetail", sender: self)
-
+                        
                     } else {
                         self.presentNoRecordsAlert()
                     }
