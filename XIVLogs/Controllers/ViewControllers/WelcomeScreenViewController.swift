@@ -21,6 +21,21 @@ class WelcomeScreenViewController: UIViewController {
     var regionPickerAccessory: UIToolbar?
     var zonePickerAccessory: UIToolbar?
     
+    /// Playersearch data
+//    var playerResults = [PlayerResult]() {
+//        didSet {
+//            if self.playerResults != [] {
+//                fetchAvatar()
+//                if FFLogsController.shared.encounters != [] {
+//                    self.performSegue(withIdentifier: "toPlayerDetail", sender: self)
+//                    
+//                } else {
+//                    self.presentNoRecordsAlert()
+//                }
+//            }
+//        }
+//    }
+    
     //  MARK: - Outlets
     // Logo image
     @IBOutlet weak var logoImageView: UIImageView!
@@ -72,13 +87,13 @@ class WelcomeScreenViewController: UIViewController {
     func setupUI() {
         // Adds bottom line to textfields
         characterSearchTextField.setPadding()
-        characterSearchTextField.setBottomBorderThick()
+        characterSearchTextField.setBottomBorderThin()
         serverSearchTextField.setPadding()
-        serverSearchTextField.setBottomBorderThick()
+        serverSearchTextField.setBottomBorderThin()
         regionSearchTextField.setPadding()
-        regionSearchTextField.setBottomBorderThick()
+        regionSearchTextField.setBottomBorderThin()
         zoneSearchTextField.setPadding()
-        zoneSearchTextField.setBottomBorderThick()
+        zoneSearchTextField.setBottomBorderThin()
         // See-thru navbar
         setupNavBar()
         // Character search toolbar
@@ -288,6 +303,21 @@ class WelcomeScreenViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.XIVLogsAetheryteDarkBlue
     }
     
+//    func fetchAvatar() {
+//        let results = self.playerResults
+//        XivApiController.fetchAvatar(for: results[0]) { (result) in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let image):
+//                    print("yes image")
+//                    XivApiController.shared.playerAvatar = image
+//                case .failure(let error):
+//                    print(error, "no image")
+//                }
+//            }
+//        }
+//    }
+    
     /// Fetch encounters with text field data
     func fetchEncounters() {
         // Make sure text fields have values
@@ -296,7 +326,22 @@ class WelcomeScreenViewController: UIViewController {
               let region = regionSearchTextField.text, !region.isEmpty,
               let zone = zoneSearchTextField.text, !zone.isEmpty else { return }
         
+        XivApiController.shared.playerAvatar = nil
+        
+        XivApiController.searchCharacter(withName: name, withServer: server) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let results):
+                    print("got results")
+                    XivApiController.shared.playerResults = results
+                case .failure(let error):
+                    print(error, "no results")
+                }
+            }
+        }
+        
         // Associate zone string with corresponding int
+        // 38 just the default value
         var zoneIDString: String = "38"
         if zone == "Eden's Promise (Savage)" {
             zoneIDString = FFLogsStrings.zoneEdensPromiseQueryValue
@@ -311,7 +356,7 @@ class WelcomeScreenViewController: UIViewController {
         } else if zone == "Copied Factory" {
             zoneIDString = FFLogsStrings.zoneCopiedFactoryQueryValue
         }
-        
+        print(zoneIDString)
         // Clear encounter array
         FFLogsController.shared.encounters = []
         // Network call to get zone encounters
@@ -325,32 +370,84 @@ class WelcomeScreenViewController: UIViewController {
                     
                     // If zone is eden's promise, makes sure individual encounter arrays have data
                     // then append first in array to topparsesofencounters array
+                    let cloud = FFLogsController.shared.cloudOfDarknessEncounters
+                    let shadow = FFLogsController.shared.shadowKeeperEncounters
+                    let fate = FFLogsController.shared.fateBreakerEncounters
+                    let eden = FFLogsController.shared.EdensPromiseEncounters
+                    let oracle = FFLogsController.shared.OracleOfDarknessEncounters
                     if self.zoneSearchTextField.text == "Eden's Promise (Savage)" {
-                        if FFLogsController.shared.cloudOfDarknessEncounters != [] {
-                            FFLogsController.shared.topParsesOfEncounters.append(FFLogsController.shared.cloudOfDarknessEncounters[0])
+                        if cloud != [] {
+                            FFLogsController.shared.topParsesOfEncounters.append(cloud[0])
                         }
                         
-                        if FFLogsController.shared.shadowKeeperEncounters != [] {
-                            FFLogsController.shared.topParsesOfEncounters.append(FFLogsController.shared.shadowKeeperEncounters[0])
+                        if shadow != [] {
+                            FFLogsController.shared.topParsesOfEncounters.append(shadow[0])
                         }
                         
-                        if FFLogsController.shared.fateBreakerEncounters != [] {
-                            FFLogsController.shared.topParsesOfEncounters.append(FFLogsController.shared.fateBreakerEncounters[0])
+                        if fate != [] {
+                            FFLogsController.shared.topParsesOfEncounters.append(fate[0])
                         }
                         
-                        if FFLogsController.shared.EdensPromiseEncounters != [] {
-                            FFLogsController.shared.topParsesOfEncounters.append(FFLogsController.shared.EdensPromiseEncounters[0])
+                        if eden != [] {
+                            FFLogsController.shared.topParsesOfEncounters.append(eden[0])
                         }
                         
-                        if FFLogsController.shared.OracleOfDarknessEncounters != [] {
-                            FFLogsController.shared.topParsesOfEncounters.append(FFLogsController.shared.OracleOfDarknessEncounters[0])
+                        if oracle != [] {
+                            FFLogsController.shared.topParsesOfEncounters.append(oracle[0])
                         }
                     }
                     
-                    print(FFLogsController.shared.topParsesOfEncounters)
+//                    // Eden's Verse
+//                    let ramuh = FFLogsController.shared.ramuhEncounters
+//                    let ifritg = FFLogsController.shared.ifritGarudaEncounters
+//                    let idol = FFLogsController.shared.idolOfDarknessEncounters
+//                    let shiva = FFLogsController.shared.shivaEncounters
+//                    if self.zoneSearchTextField.text == "Eden's Verse (Savage)" {
+//                        if ramuh != [] {
+//                            FFLogsController.shared.topParsesOfEncounters.append(ramuh[0])
+//                            print("hi")
+//                        }
+//
+//                        if ifritg != [] {
+//                            FFLogsController.shared.topParsesOfEncounters.append(ifritg[0])
+//                        }
+//
+//                        if idol != [] {
+//                            FFLogsController.shared.topParsesOfEncounters.append(idol[0])
+//                        }
+//
+//                        if shiva != [] {
+//                            FFLogsController.shared.topParsesOfEncounters.append(shiva[0])
+//                        }
+//                    }
+                    
+                    // Trials III
+                    if self.zoneSearchTextField.text == "Trials III" {
+                        
+                    }
+                    
+                    // Trials II
+                    if self.zoneSearchTextField.text == "Trials II" {
+                        
+                    }
+                    
+                    // Puppet's bunker
+                    if self.zoneSearchTextField.text == "Puppet's Bunker" {
+                        
+                    }
+                    
+                    // Copied Factory
+                    if self.zoneSearchTextField.text == "Copied Factory" {
+                        
+                    }
+                    
+                    print(FFLogsController.shared.topParsesOfEncounters, "above is topparses contents")
                     // Perform segue
                     if FFLogsController.shared.encounters != [] {
-                        self.performSegue(withIdentifier: "toPlayerDetail", sender: self)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            self.performSegue(withIdentifier: "toPlayerDetail", sender: self)
+                        }
+                        
                     } else {
                         self.presentNoRecordsAlert()
                     }

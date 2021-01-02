@@ -45,30 +45,75 @@ class FFLogsController {
     var encounters = [Encounter]() {
         didSet {
             
+            // reset top parse container
             topParsesOfEncounters = []
+            
+            // eden's promise
             cloudOfDarknessEncounters = []
             shadowKeeperEncounters = []
             fateBreakerEncounters = []
             EdensPromiseEncounters = []
             OracleOfDarknessEncounters = []
-            
             appendCloudOfDarkness(fromEncounters: encounters)
             appendShadowkeeper(fromEncounters: encounters)
             appendFatebreaker(fromEncounters: encounters)
             appendEdensPromise(fromEncounters: encounters)
             appendOracleOfDarkness(fromEncounters: encounters)
-            print(cloudOfDarknessEncounters)
+            
+            // reset bools
+            cloudTapped = false
+            shadowTapped = false
+            fateTapped = false
+            edenTapped = false
+            oracleTapped = false
+//            // edens' verse
+//            ramuhEncounters = []
+//            ifritGarudaEncounters = []
+//            idolOfDarknessEncounters = []
+//            OracleOfDarknessEncounters = []
+//            appendRamuh(fromEncounters: encounters)
+//            appendIfritG(fromEncounters: encounters)
+//            appendIdol(fromEncounters: encounters)
+//            appendShiva(fromEncounters: encounters)
         }
     }
     
-    // Eden's Promise (Savage) containers
-    var cloudOfDarknessEncounters = [Encounter]()
-    var shadowKeeperEncounters = [Encounter]()
-    var fateBreakerEncounters = [Encounter]()
-    var EdensPromiseEncounters = [Encounter]()
-    var OracleOfDarknessEncounters = [Encounter]()
     // Top parses container
     var topParsesOfEncounters = [Encounter]()
+    // Eden's Promise (Savage) containers
+    var cloudTapped = false
+    var cloudOfDarknessEncounters = [Encounter]()
+    var shadowTapped = false
+    var shadowKeeperEncounters = [Encounter]()
+    var fateTapped = false
+    var fateBreakerEncounters = [Encounter]()
+    var edenTapped = false
+    var EdensPromiseEncounters = [Encounter]()
+    var oracleTapped = false
+    var OracleOfDarknessEncounters = [Encounter]()
+    // Eden's Verse (Savage) containers
+    var ramuhEncounters = [Encounter]()
+    var ifritGarudaEncounters = [Encounter]()
+    var idolOfDarknessEncounters = [Encounter]()
+    var shivaEncounters = [Encounter]()
+    // Trials III containers
+    var emeraldIIEncounters = [Encounter]()
+    var emeraldIEncounters = [Encounter]()
+    // Trials II containers
+    var rubyIEncounters = [Encounter]()
+    var rubyIIEncounters = [Encounter]()
+    var varisEncounters = [Encounter]()
+    var WOLEncounters = [Encounter]()
+    // Puppet's bunker containers
+    var aegisUnitEncounters = [Encounter]()
+    var flightUnitsEncounters = [Encounter]()
+    var heavyUnitEncounters = [Encounter]()
+    var compoundEncounters = [Encounter]()
+    // Copied Factory containers
+    var serialJointedEncounters = [Encounter]()
+    var hobbesEncounters = [Encounter]()
+    var engelsEncounters = [Encounter]()
+    var walkingFortressEncounters = [Encounter]()
     
     // Server List, sorted alphabetically, grouped by datacenter
     let servers = [
@@ -277,8 +322,12 @@ class FFLogsController {
         }.resume()
     }
     
+    //  MARK: - Methods
+    
+    
     //  MARK: - Sorting Methods
     
+    // Eden's promise
     func appendCloudOfDarkness(fromEncounters encounters: [Encounter]) {
         for e in encounters {
             if e.encounterName == "Cloud of Darkness" && e.difficulty == 101 {
@@ -318,4 +367,38 @@ class FFLogsController {
             }
         }
     }
+    
+    // eden's verse
+    func appendRamuh(fromEncounters encounters: [Encounter]) {
+        for e in encounters {
+            if e.encounterName == "Ramuh" && e.difficulty == 101 {
+                self.ramuhEncounters.append(e)
+            }
+        }
+    }
+    
+    func appendIfritG(fromEncounters encounter: [Encounter]) {
+        for e in encounter {
+            if e.encounterName == "Ifrit and Garuda" && e.difficulty == 101 {
+                self.ifritGarudaEncounters.append(e)
+            }
+        }
+    }
+    
+    func appendIdol(fromEncounters encounter: [Encounter]) {
+        for e in encounter {
+            if e.encounterName == "The Idol of Darkness" && e.difficulty == 101 {
+                self.idolOfDarknessEncounters.append(e)
+            }
+        }
+    }
+    
+    func appendShiva(fromEncounters encounter: [Encounter]) {
+        for e in encounter {
+            if e.encounterName == "Shiva" && e.difficulty == 101 {
+                self.shivaEncounters.append(e)
+            }
+        }
+    }
+    
 }

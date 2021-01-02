@@ -11,7 +11,7 @@ class TestViewController: UIViewController {
     
     //  MARK: - Properties
     var encounters = [Encounter]()
-    var character: TopLevelDictionary.Character?
+    var character: Character?
     
     //  MARK: - Outlets
     // Labels
