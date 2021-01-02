@@ -60,6 +60,12 @@ class FFLogsController {
             appendEdensPromise(fromEncounters: encounters)
             appendOracleOfDarkness(fromEncounters: encounters)
             
+            // reset bools
+            cloudTapped = false
+            shadowTapped = false
+            fateTapped = false
+            edenTapped = false
+            oracleTapped = false
 //            // edens' verse
 //            ramuhEncounters = []
 //            ifritGarudaEncounters = []
@@ -75,10 +81,15 @@ class FFLogsController {
     // Top parses container
     var topParsesOfEncounters = [Encounter]()
     // Eden's Promise (Savage) containers
+    var cloudTapped = false
     var cloudOfDarknessEncounters = [Encounter]()
+    var shadowTapped = false
     var shadowKeeperEncounters = [Encounter]()
+    var fateTapped = false
     var fateBreakerEncounters = [Encounter]()
+    var edenTapped = false
     var EdensPromiseEncounters = [Encounter]()
+    var oracleTapped = false
     var OracleOfDarknessEncounters = [Encounter]()
     // Eden's Verse (Savage) containers
     var ramuhEncounters = [Encounter]()

@@ -108,6 +108,11 @@ class PlayerDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
 //        fetchPlayerResults()
+        FFLogsController.shared.cloudTapped = false
+        FFLogsController.shared.shadowTapped = false
+        FFLogsController.shared.fateTapped = false
+        FFLogsController.shared.edenTapped = false
+        FFLogsController.shared.oracleTapped = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -117,31 +122,36 @@ class PlayerDetailViewController: UIViewController {
     
     //  MARK: - Actions
     @IBAction func firstEncounterTapped(_ sender: Any) {
-        print("tapped")
+        
+        FFLogsController.shared.cloudTapped = true
         if self.firstEncounterArrowImageView.alpha == 1 {
             performSegue(withIdentifier: "toEncounterDetail", sender: self)
         }
     }
     
     @IBAction func secondEncounterTapped(_ sender: Any) {
+        FFLogsController.shared.shadowTapped = true
         if self.secondEncounterArrowImageView.alpha == 1 {
             performSegue(withIdentifier: "toEncounterDetail", sender: self)
         }
     }
     
     @IBAction func thirdEncounterTapped(_ sender: Any) {
+        FFLogsController.shared.fateTapped = true
         if self.thirdEncounterArrowImageView.alpha == 1 {
             performSegue(withIdentifier: "toEncounterDetail", sender: self)
         }
     }
     
     @IBAction func fourthEncounterTapped(_ sender: Any) {
+        FFLogsController.shared.edenTapped = true
         if self.fourthEncounterArrowImageView.alpha == 1 {
             performSegue(withIdentifier: "toEncounterDetail", sender: self)
         }
     }
     
     @IBAction func fifthEncounterTapped(_ sender: Any) {
+        FFLogsController.shared.oracleTapped = true
         if self.fifthEncounterArrowImageView.alpha == 1 {
             performSegue(withIdentifier: "toEncounterDetail", sender: self)
         }
@@ -309,7 +319,6 @@ class PlayerDetailViewController: UIViewController {
                 firstEncounterDPSLabel.textColor = .XIVLogsrDPSPurple
                 colorParse(parse: parse(parses, index: 0), parseLabel: firstParseLabel)
                 firstParseSpecImageView.image = UIImage(named: parses[0].spec)
-                firstParseRankLabel.text = "\(parses[0].rank) / \(parses[0].outOf)"
                 
             } else {
                 firstEncounterArrowImageView.alpha = 0
@@ -323,7 +332,6 @@ class PlayerDetailViewController: UIViewController {
                 secondEncounterDPSLabel.text = rDPSFormatter(parses[1].total)
                 secondEncounterDPSLabel.textColor = .XIVLogsrDPSPurple
                 secondParseSpecImageView.image = UIImage(named: parses[1].spec)
-                secondParseRankLabel.text = "\(parses[1].rank) / \(parses[1].outOf)"
                 colorParse(parse: parse(parses, index: 1), parseLabel: secondParseLabel)
             } else {
                 secondEncounterArrowImageView.alpha = 0
@@ -337,7 +345,6 @@ class PlayerDetailViewController: UIViewController {
                 thirdEncounterDPSLabel.text = rDPSFormatter(parses[2].total)
                 thirdEncounterDPSLabel.textColor = .XIVLogsrDPSPurple
                 thirdParseSpecImageView.image = UIImage(named: parses[2].spec)
-                thirdParseRankLabel.text = "\(parses[2].rank) / \(parses[2].outOf)"
                 colorParse(parse: parse(parses, index: 2), parseLabel: thirdParseLabel)
             } else {
                 thirdEncounterArrowImageView.alpha = 0
@@ -351,7 +358,6 @@ class PlayerDetailViewController: UIViewController {
                 fourthEncounterDPSLabel.text = rDPSFormatter(parses[3].total)
                 fourthEncounterDPSLabel.textColor = .XIVLogsrDPSPurple
                 fourthParseSpecImageView.image = UIImage(named: parses[3].spec)
-                fourthParseRankLabel.text = "\(parses[3].rank) / \(parses[3].outOf)"
                 colorParse(parse: parse(parses, index: 3), parseLabel: fourthParseLabel)
             } else {
                 fourthEncounterArrowImageView.alpha = 0
@@ -365,7 +371,6 @@ class PlayerDetailViewController: UIViewController {
                 fifthEncounterDPSLabel.text = rDPSFormatter(parses[4].total)
                 fifthEncounterDPSLabel.textColor = .XIVLogsrDPSPurple
                 fifthParseSpecImageView.image = UIImage(named: parses[4].spec)
-                fifthParseRankLabel.text = "\(parses[4].rank) / \(parses[4].outOf)"
                 colorParse(parse: parse(parses, index: 4), parseLabel: fifthParseLabel)
             } else {
                 fifthEncounterArrowImageView.alpha = 0
