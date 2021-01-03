@@ -24,6 +24,8 @@ class EncounterLogsViewController: UIViewController {
         self.encountersTableView.delegate = self
         self.encountersTableView.dataSource = self
         
+        self.encountersTableView.tableFooterView = UIView()
+        
         updateViews()
         
     }
@@ -82,6 +84,7 @@ extension EncounterLogsViewController: UITableViewDelegate, UITableViewDataSourc
             print(FFLogsController.shared.OracleOfDarknessEncounters, "oracle encounters")
             cell.encounters = FFLogsController.shared.OracleOfDarknessEncounters[indexPath.row]
         }
+        
         
         return cell
     }

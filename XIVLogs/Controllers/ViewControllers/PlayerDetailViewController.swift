@@ -40,6 +40,7 @@ class PlayerDetailViewController: UIViewController {
     @IBOutlet weak var playerServerLabel: UILabel!
     @IBOutlet weak var zoneNameLabel: UILabel!
     // Encounter/Parse Views
+    @IBOutlet weak var footerView: UILabel!
     // First
     @IBOutlet weak var firstEncounterView: UIView!
     @IBOutlet weak var firstEncounterImageView: UIImageView!
@@ -167,26 +168,39 @@ class PlayerDetailViewController: UIViewController {
         StyleGuide.roundCorners(playerAvatarImageView)
         // Set all five subviews alpha to 0
         setFiveSubviewsAlphaTo(0.0)
+        // footerView
+        footerView.layer.borderColor = UIColor.darkGray.cgColor
+        footerView.layer.borderWidth = 0.7
         // First
         StyleGuide.roundCorners(firstEncounterView)
         StyleGuide.roundCorners(firstEncounterImageView)
         StyleGuide.roundCorners(firstParseView)
+        firstEncounterView.layer.borderWidth = 0.7
+        firstEncounterView.layer.borderColor = UIColor.darkGray.cgColor
         // Second
         StyleGuide.roundCorners(secondEncounterView)
         StyleGuide.roundCorners(secondEncounterImageView)
         StyleGuide.roundCorners(secondParseView)
+        secondEncounterView.layer.borderWidth = 0.7
+        secondEncounterView.layer.borderColor = UIColor.darkGray.cgColor
         // Third
         StyleGuide.roundCorners(thirdEncounterView)
         StyleGuide.roundCorners(thirdEncounterImageView)
         StyleGuide.roundCorners(thirdParseView)
+        thirdEncounterView.layer.borderWidth = 0.7
+        thirdEncounterView.layer.borderColor = UIColor.darkGray.cgColor
         // Fourth
         StyleGuide.roundCorners(fourthEncounterView)
         StyleGuide.roundCorners(fourthEncounterImageView)
         StyleGuide.roundCorners(fourthParseView)
+        fourthEncounterView.layer.borderWidth = 0.7
+        fourthEncounterView.layer.borderColor = UIColor.darkGray.cgColor
         // Fifth
         StyleGuide.roundCorners(fifthEncounterView)
         StyleGuide.roundCorners(fifthEncounterImageView)
         StyleGuide.roundCorners(fifthParseView)
+        fifthEncounterView.layer.borderWidth = 0.8
+        fifthEncounterView.layer.borderColor = UIColor.darkGray.cgColor
         
     }
     
@@ -322,6 +336,7 @@ class PlayerDetailViewController: UIViewController {
                 
             } else {
                 firstEncounterArrowImageView.alpha = 0
+                firstParseSpecImageView.alpha = 0
             }
             
             if parses.indices.contains(1) {
@@ -335,6 +350,7 @@ class PlayerDetailViewController: UIViewController {
                 colorParse(parse: parse(parses, index: 1), parseLabel: secondParseLabel)
             } else {
                 secondEncounterArrowImageView.alpha = 0
+                secondParseSpecImageView.alpha = 0
             }
             
             if parses.indices.contains(2) {
@@ -348,6 +364,7 @@ class PlayerDetailViewController: UIViewController {
                 colorParse(parse: parse(parses, index: 2), parseLabel: thirdParseLabel)
             } else {
                 thirdEncounterArrowImageView.alpha = 0
+                thirdParseSpecImageView.alpha = 0
             }
             
             if parses.indices.contains(3) {
@@ -361,6 +378,7 @@ class PlayerDetailViewController: UIViewController {
                 colorParse(parse: parse(parses, index: 3), parseLabel: fourthParseLabel)
             } else {
                 fourthEncounterArrowImageView.alpha = 0
+                fourthParseSpecImageView.alpha = 0
             }
             
             if parses.indices.contains(4) {
@@ -374,6 +392,7 @@ class PlayerDetailViewController: UIViewController {
                 colorParse(parse: parse(parses, index: 4), parseLabel: fifthParseLabel)
             } else {
                 fifthEncounterArrowImageView.alpha = 0
+                fifthParseSpecImageView.alpha = 0
             }
             
         } else if encounterTier == "Eden's Verse (Savage)" {
