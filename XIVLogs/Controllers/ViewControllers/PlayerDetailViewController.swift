@@ -611,6 +611,32 @@ class PlayerDetailViewController: UIViewController {
         return rDPS
     }
     
+    //  MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toEncounterDetail" {
+            guard let destinationVC = segue.destination as? EncounterLogsViewController else {return}
+            
+            let name: String?
+            
+            if FFLogsController.shared.cloudTapped == true {
+                name = firstEncounterNameLabel.text
+                destinationVC.encounterName = name
+            } else if FFLogsController.shared.shadowTapped == true {
+                name = secondEncounterNameLabel.text
+                destinationVC.encounterName = name
+            } else if FFLogsController.shared.fateTapped == true {
+                name = thirdEncounterNameLabel.text
+                destinationVC.encounterName = name
+            } else if FFLogsController.shared.edenTapped == true {
+                name = fourthEncounterNameLabel.text
+                destinationVC.encounterName = name
+            } else if FFLogsController.shared.oracleTapped == true {
+                name = fifthEncounterNameLabel.text
+                destinationVC.encounterName = name
+            }
+        }
+    }
+    
 }
 
 //  MARK: - XiVApiControllerDelegate

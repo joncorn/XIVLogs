@@ -12,6 +12,7 @@ struct Encounter: Decodable {
     let spec: String
     let rank: Int
     let outOf: Int
+    let startTime: Double
     let difficulty: Int
     let characterID: Int
     let characterName: String

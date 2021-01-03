@@ -23,6 +23,7 @@ class EncounterTableViewCell: UITableViewCell {
     @IBOutlet weak var parseSpecLabel: UIImageView!
     @IBOutlet weak var rDPSLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
 
     override func awakeFromNib() {
@@ -39,11 +40,18 @@ class EncounterTableViewCell: UITableViewCell {
     //  MARK: - Methods
     func updateViews() {
         guard let encounters = encounters else { return }
+        let logDate = Date(timeIntervalSince1970: (encounters.startTime / 1000.0))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, yyyy"
+        
         let parseInt = Int(encounters.percentile)
         colorParse(parse: parseInt, parseLabel: parseNumberLabel)
         parseSpecLabel.image = UIImage(named: encounters.spec)
         rDPSLabel.text = rDPSFormatter(encounters.total)
-        rankLabel.text = "\(encounters.rank) / \(encounters.outOf)"
+        rDPSLabel.textColor = .XIVLogsrDPSPurple
+        rankLabel.text = "\(encounters.outOf)"
+        dateLabel.text = dateFormatter.string(from: logDate)
+        
     }
     
     /// rDPS to correct format
