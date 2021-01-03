@@ -42,7 +42,7 @@ class EncounterTableViewCell: UITableViewCell {
         guard let encounters = encounters else { return }
         let logDate = Date(timeIntervalSince1970: (encounters.startTime / 1000.0))
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM d, yyyy"
+        dateFormatter.dateFormat = "MM/dd/yy"
         
         let parseInt = Int(encounters.percentile)
         colorParse(parse: parseInt, parseLabel: parseNumberLabel)
@@ -52,6 +52,7 @@ class EncounterTableViewCell: UITableViewCell {
         rankLabel.text = "\(encounters.outOf)"
         dateLabel.text = dateFormatter.string(from: logDate)
         
+        rankLabel.alpha = 0
     }
     
     /// rDPS to correct format

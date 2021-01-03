@@ -15,6 +15,7 @@ class EncounterLogsViewController: UIViewController {
     //  MARK: - Outlets
     @IBOutlet weak var encounterNameLabel: UILabel!
     @IBOutlet weak var encountersTableView: UITableView!
+    @IBOutlet weak var encounterImageView: UIImageView!
     
     //  MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -29,9 +30,10 @@ class EncounterLogsViewController: UIViewController {
     
     //  MARK: - Methods
     func updateViews() {
-        print(encounterName)
-        encounterNameLabel.text = encounterName
-        encounterNameLabel.textColor = .XIVLogsEncounterNameBlue
+        guard let name = encounterName else { return }
+        encounterNameLabel.text = name
+        encounterImageView.image = UIImage(named: name)
+        StyleGuide.roundCorners(encounterImageView)
     }
     
 }
