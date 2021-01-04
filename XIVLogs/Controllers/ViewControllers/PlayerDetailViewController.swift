@@ -213,6 +213,7 @@ class PlayerDetailViewController: UIViewController {
         
     }
     
+
     func setDefaultAvatar() {
 
         let spec = FFLogsController.shared.topParsesOfEncounters[0].spec
@@ -331,7 +332,7 @@ class PlayerDetailViewController: UIViewController {
         if encounterTier == "Eden's Promise (Savage)" {
             // Reveals # of view corresponding to zone encounter count
             setFiveSubviewsAlphaTo(1)
-            
+            print("TOP PARSES:", FFLogsController.shared.topParsesOfEncounters)
             // If topParse array contains something, set parse label - else hide arrow
             if parses.indices.contains(0) {
                 // Populate first row

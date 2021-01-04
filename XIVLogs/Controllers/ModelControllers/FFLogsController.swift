@@ -192,6 +192,86 @@ class FFLogsController {
         "Shinryu",
         "Titan"]
     
+    let naRegions = [
+        // Aether DC - NA
+        "Adamantoise",
+        "Cactuar",
+        "Faerie",
+        "Gilgamesh",
+        "Jenova",
+        "Midgardsormr",
+        "Sargatanas",
+        "Siren",
+        // Crystal DC - NA
+        "Balmung",
+        "Brynhildr",
+        "Coeurl",
+        "Diabolos",
+        "Goblin",
+        "Malboro",
+        "Mateus",
+        "Zalera",
+        // Primal DC - NA
+        "Behemoth",
+        "Excalibur",
+        "Exodus",
+        "Famfrit",
+        "Hyperion",
+        "Lamia",
+        "Leviathan",
+        "Ultros"]
+    
+    let euRegions = [// Chaos DC - EU
+        "Cerberus",
+        "Louisoix",
+        "Moogle",
+        "Omega",
+        "Ragnarok",
+        // Light DC - EU
+        "Lich",
+        "Odin",
+        "Phoenix",
+        "Shiva",
+        "Zodiark"]
+    
+    let jpRegions = [
+        // Elemental DC - JP
+        "Aegis",
+        "Atomos",
+        "Carbuncle",
+        "Garuda",
+        "Gungnir",
+        "Kujata",
+        "Ramuh",
+        "Tonberry",
+        "Typhon",
+        "Unicorn",
+        // Gaia DC - JP
+        "Alexander",
+        "Bahamut",
+        "Durandal",
+        "Fenrir",
+        "Ifrit",
+        "Ridill",
+        "Tiamat",
+        "Ultima",
+        "Valefor",
+        "Yojimbo",
+        "Zeromus",
+        // Mana DC - JP
+        "Anima",
+        "Asura",
+        "Belias",
+        "Chocobo",
+        "Hades",
+        "Ixion",
+        "Mandragora",
+        "Masamune",
+        "Pandemonium",
+        "Shinryu",
+        "Titan"
+    ]
+    
     let regions = ["NA",
                    "EU",
                    "JP"]

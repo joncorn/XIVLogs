@@ -100,7 +100,9 @@ class WelcomeScreenViewController: UIViewController {
         setupPlayerNameToolbar()
         // Search button
         searchButton.layer.cornerRadius = searchButton.bounds.height / 2
-        searchButton.layer.backgroundColor = UIColor.XIVLogsAetheryteDarkBlue.cgColor
+        searchButton.layer.backgroundColor = UIColor.XIVLogsBackgroundBannerPurple.cgColor
+        searchButton.layer.borderWidth = 1.5
+        searchButton.layer.borderColor = UIColor.darkGray.cgColor
         searchButton.clipsToBounds = true
     }
     
@@ -133,19 +135,19 @@ class WelcomeScreenViewController: UIViewController {
         // Server PickerView
         serverPicker = serverPickerView()
         serverPicker?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        serverPicker?.backgroundColor = UIColor.XIVLogsAetheryteDarkBlue
+        serverPicker?.backgroundColor = UIColor.XIVLogsBackgroundBannerPurple
         serverPicker?.data = FFLogsController.shared.servers
         serverSearchTextField.inputView = serverPicker
         // Region PickerView
         regionPicker = regionPickerView()
         regionPicker?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        regionPicker?.backgroundColor = UIColor.XIVLogsAetheryteDarkBlue
+        regionPicker?.backgroundColor = UIColor.XIVLogsBackgroundBannerPurple
         regionPicker?.data = FFLogsController.shared.regions
         regionSearchTextField.inputView = regionPicker
         // Zone PickerView
         zonePicker = zonePickerView()
         zonePicker?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        zonePicker?.backgroundColor = UIColor.XIVLogsAetheryteDarkBlue
+        zonePicker?.backgroundColor = UIColor.XIVLogsBackgroundBannerPurple
         zonePicker?.data = FFLogsController.shared.zoneStrings
         zoneSearchTextField.inputView = zonePicker
         // PickerView Toolbars
@@ -158,8 +160,8 @@ class WelcomeScreenViewController: UIViewController {
         let bar = UIToolbar()
         bar.autoresizingMask = .flexibleHeight
         bar.barStyle = .default
-        bar.barTintColor = UIColor.XIVLogsAetheryteDarkBlue
-        bar.backgroundColor = UIColor.XIVLogsAetheryteDarkBlue
+        bar.barTintColor = UIColor.XIVLogsBackgroundBannerPurple
+        bar.backgroundColor = UIColor.XIVLogsBackgroundBannerPurple
         bar.isTranslucent = false
         var frame = bar.frame
         frame.size.height = 44.0
@@ -179,8 +181,8 @@ class WelcomeScreenViewController: UIViewController {
         serverPickerAccessory = UIToolbar()
         serverPickerAccessory?.autoresizingMask = .flexibleHeight
         serverPickerAccessory?.barStyle = .default
-        serverPickerAccessory?.barTintColor = UIColor.XIVLogsAetheryteDarkBlue
-        serverPickerAccessory?.backgroundColor = UIColor.XIVLogsAetheryteDarkBlue
+        serverPickerAccessory?.barTintColor = UIColor.XIVLogsBackgroundBannerPurple
+        serverPickerAccessory?.backgroundColor = UIColor.XIVLogsBackgroundBannerPurple
         serverPickerAccessory?.isTranslucent = false
         var frame = serverPickerAccessory?.frame
         frame?.size.height = 44.0
@@ -203,8 +205,8 @@ class WelcomeScreenViewController: UIViewController {
         regionPickerAccessory = UIToolbar()
         regionPickerAccessory?.autoresizingMask = .flexibleHeight
         regionPickerAccessory?.barStyle = .default
-        regionPickerAccessory?.barTintColor = UIColor.XIVLogsAetheryteDarkBlue
-        regionPickerAccessory?.backgroundColor = UIColor.XIVLogsAetheryteDarkBlue
+        regionPickerAccessory?.barTintColor = UIColor.XIVLogsBackgroundBannerPurple
+        regionPickerAccessory?.backgroundColor = UIColor.XIVLogsBackgroundBannerPurple
         regionPickerAccessory?.isTranslucent = false
         var frame = regionPickerAccessory?.frame
         frame?.size.height = 44.0
@@ -227,8 +229,8 @@ class WelcomeScreenViewController: UIViewController {
         zonePickerAccessory = UIToolbar()
         zonePickerAccessory?.autoresizingMask = .flexibleHeight
         zonePickerAccessory?.barStyle = .default
-        zonePickerAccessory?.barTintColor = UIColor.XIVLogsAetheryteDarkBlue
-        zonePickerAccessory?.backgroundColor = UIColor.XIVLogsAetheryteDarkBlue
+        zonePickerAccessory?.barTintColor = UIColor.XIVLogsBackgroundBannerPurple
+        zonePickerAccessory?.backgroundColor = UIColor.XIVLogsBackgroundBannerPurple
         zonePickerAccessory?.isTranslucent = false
         var frame = zonePickerAccessory?.frame
         frame?.size.height = 44.0
@@ -258,10 +260,21 @@ class WelcomeScreenViewController: UIViewController {
         serverSearchTextField.resignFirstResponder()
     }
     
+    @objc func passRegionFromServer(server: String) {
+        if FFLogsController.shared.naRegions.contains(server) {
+            regionSearchTextField.text = "NA"
+        } else if FFLogsController.shared.euRegions.contains(server) {
+            regionSearchTextField.text = "EU"
+        } else if FFLogsController.shared.jpRegions.contains(server) {
+            regionSearchTextField.text = "JP"
+        }
+    }
+    
     /// Called when the done button of the `pickerAccessory` was clicked. Dismisses the picker and puts the selected value into the textField
     @objc func serverDoneButtonTapped(_ button: UIBarButtonItem?) {
         serverSearchTextField.resignFirstResponder()
         serverSearchTextField.text = serverPicker?.selectedValue
+        passRegionFromServer(server: serverPicker!.selectedValue)
         
     }
     

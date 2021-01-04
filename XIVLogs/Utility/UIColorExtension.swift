@@ -14,6 +14,16 @@ extension UIColor {
         return UIColor(red: 15.0/255.0, green: 15.0/255.0, blue: 15.0/255.0, alpha: 1.0)
     }
     
+    //  MARK: - Banner Blue
+    class var XIVLogsBackgroundBannerBlue: UIColor {
+        return UIColor(red: 0.0/255.0, green: 21.0/255.0, blue: 32.0/255.0, alpha: 1.0)
+    }
+    
+    //  MARK: - Banner Purple
+    class var XIVLogsBackgroundBannerPurple: UIColor {
+        return UIColor(red: 43.0/255.0, green: 21.0/255.0, blue: 43.0/255.0, alpha: 1.0)
+    }
+    
     //  MARK: - Aetheryte Blue
     class var XIVLogsAetheryteBlue: UIColor {
         return UIColor(red: 159.0/255.0, green: 211.0/255.0, blue: 221.0/255.0, alpha: 1.0)

@@ -32,8 +32,9 @@ class EncounterLogsViewController: UIViewController {
         encounterImageView.layer.borderWidth = 1
         encounterNameView.addTopBorderWithColor(color: .darkGray, width: 1.5)
         encounterNameView.addBottomBorderWithColor(color: .darkGray, width: 1.5)
+        StyleGuide.roundCorners(detailView)
         detailView.layer.borderColor = UIColor.darkGray.cgColor
-        detailView.layer.borderWidth = 1
+        detailView.layer.borderWidth = 1.5
         
         updateViews()
         
