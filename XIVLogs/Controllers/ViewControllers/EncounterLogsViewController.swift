@@ -16,6 +16,8 @@ class EncounterLogsViewController: UIViewController {
     @IBOutlet weak var encounterNameLabel: UILabel!
     @IBOutlet weak var encountersTableView: UITableView!
     @IBOutlet weak var encounterImageView: UIImageView!
+    @IBOutlet weak var encounterNameView: UIView!
+    @IBOutlet weak var detailView: UIView!
     
     //  MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -25,6 +27,13 @@ class EncounterLogsViewController: UIViewController {
         self.encountersTableView.dataSource = self
         
         self.encountersTableView.tableFooterView = UIView()
+        
+        encounterImageView.layer.borderColor = UIColor.darkGray.cgColor
+        encounterImageView.layer.borderWidth = 1
+        encounterNameView.addTopBorderWithColor(color: .darkGray, width: 1.5)
+        encounterNameView.addBottomBorderWithColor(color: .darkGray, width: 1.5)
+        detailView.layer.borderColor = UIColor.darkGray.cgColor
+        detailView.layer.borderWidth = 1
         
         updateViews()
         

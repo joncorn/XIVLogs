@@ -51,8 +51,6 @@ class EncounterTableViewCell: UITableViewCell {
         rDPSLabel.textColor = .XIVLogsrDPSPurple
         rankLabel.text = "\(encounters.outOf)"
         dateLabel.text = dateFormatter.string(from: logDate)
-        
-        rankLabel.alpha = 0
     }
     
     /// rDPS to correct format

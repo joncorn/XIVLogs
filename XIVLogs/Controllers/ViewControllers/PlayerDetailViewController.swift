@@ -35,6 +35,9 @@ class PlayerDetailViewController: UIViewController {
     //  MARK: - Outlets
     // Avatar
     @IBOutlet weak var playerAvatarImageView: UIImageView!
+    // headerViews
+    @IBOutlet weak var playerView: UIView!
+    @IBOutlet weak var encounterNameView: UILabel!
     // Labels
     @IBOutlet weak var playerNameLabel: UILabel!
     @IBOutlet weak var playerServerLabel: UILabel!
@@ -165,6 +168,12 @@ class PlayerDetailViewController: UIViewController {
     }
     
     func setupViews() {
+        // headerview
+        encounterNameView.addTopBorderWithColor(color: .darkGray, width: 1.5)
+        encounterNameView.addBottomBorderWithColor(color: .darkGray, width: 1.5)
+        playerView.addTopBorderWithColor(color: .darkGray, width: 1.5)
+        playerView.addBottomBorderWithColor(color: .darkGray, width: 1.5)
+        
         StyleGuide.roundCorners(playerAvatarImageView)
         // Set all five subviews alpha to 0
         setFiveSubviewsAlphaTo(0.0)
@@ -337,6 +346,8 @@ class PlayerDetailViewController: UIViewController {
             } else {
                 firstEncounterArrowImageView.alpha = 0
                 firstParseSpecImageView.alpha = 0
+                firstParseLabel.alpha = 0
+                firstEncounterView.layer.borderWidth = 0
             }
             
             if parses.indices.contains(1) {
@@ -351,6 +362,8 @@ class PlayerDetailViewController: UIViewController {
             } else {
                 secondEncounterArrowImageView.alpha = 0
                 secondParseSpecImageView.alpha = 0
+                secondParseLabel.alpha = 0
+                secondEncounterView.layer.borderWidth = 0
             }
             
             if parses.indices.contains(2) {
@@ -365,6 +378,8 @@ class PlayerDetailViewController: UIViewController {
             } else {
                 thirdEncounterArrowImageView.alpha = 0
                 thirdParseSpecImageView.alpha = 0
+                thirdParseLabel.alpha = 0
+                thirdEncounterView.layer.borderWidth = 0
             }
             
             if parses.indices.contains(3) {
@@ -379,6 +394,8 @@ class PlayerDetailViewController: UIViewController {
             } else {
                 fourthEncounterArrowImageView.alpha = 0
                 fourthParseSpecImageView.alpha = 0
+                fourthParseLabel.alpha = 0
+                fourthEncounterView.layer.borderWidth = 0
             }
             
             if parses.indices.contains(4) {
@@ -393,6 +410,8 @@ class PlayerDetailViewController: UIViewController {
             } else {
                 fifthEncounterArrowImageView.alpha = 0
                 fifthParseSpecImageView.alpha = 0
+                fifthParseLabel.alpha = 0
+                fifthEncounterView.layer.borderWidth = 0
             }
             
         } else if encounterTier == "Eden's Verse (Savage)" {
@@ -662,5 +681,7 @@ class PlayerDetailViewController: UIViewController {
 extension PlayerDetailViewController: XivApiControllerDelegate {
     func setPlayerAvatar(_ sender: XivApiController) {
         self.playerAvatarImageView.image = XivApiController.shared.playerAvatar
+        playerAvatarImageView.layer.borderColor = UIColor.darkGray.cgColor
+        playerAvatarImageView.layer.borderWidth = 1.0
     }
 }
