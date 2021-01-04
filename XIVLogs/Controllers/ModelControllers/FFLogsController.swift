@@ -402,9 +402,6 @@ class FFLogsController {
         }.resume()
     }
     
-    //  MARK: - Methods
-    
-    
     //  MARK: - Sorting Methods
     
     // Eden's promise
