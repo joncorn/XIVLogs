@@ -12,6 +12,9 @@
 		6DA79F6C25A17013009B2FF0 /* EncounterLogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA79F6B25A17012009B2FF0 /* EncounterLogsViewController.swift */; };
 		6DA79F7125A2BD30009B2FF0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA79F7025A2BD2F009B2FF0 /* UIViewExtension.swift */; };
 		6DA79F7425A321A4009B2FF0 /* LogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA79F7325A321A3009B2FF0 /* LogDetailViewController.swift */; };
+		6DA79F7725A89A1C009B2FF0 /* BarChartTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA79F7625A89A1B009B2FF0 /* BarChartTest.swift */; };
+		6DA79F7B25AF4DB1009B2FF0 /* barChartViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA79F7A25AF4DB1009B2FF0 /* barChartViewTest.swift */; };
+		6DA79F7E25AF4E81009B2FF0 /* BarChartTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA79F7D25AF4E81009B2FF0 /* BarChartTestViewController.swift */; };
 		6DAA4E18259851A9006C963C /* serverPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAA4E17259851A9006C963C /* serverPickerView.swift */; };
 		6DAA4E1B259851B4006C963C /* regionPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAA4E1A259851B4006C963C /* regionPickerView.swift */; };
 		6DAA4E1E25985E56006C963C /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAA4E1D25985E56006C963C /* UIColorExtension.swift */; };
@@ -50,6 +53,9 @@
 		6DA79F6B25A17012009B2FF0 /* EncounterLogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncounterLogsViewController.swift; sourceTree = "<group>"; };
 		6DA79F7025A2BD2F009B2FF0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		6DA79F7325A321A3009B2FF0 /* LogDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDetailViewController.swift; sourceTree = "<group>"; };
+		6DA79F7625A89A1B009B2FF0 /* BarChartTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartTest.swift; sourceTree = "<group>"; };
+		6DA79F7A25AF4DB1009B2FF0 /* barChartViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = barChartViewTest.swift; sourceTree = "<group>"; };
+		6DA79F7D25AF4E81009B2FF0 /* BarChartTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartTestViewController.swift; sourceTree = "<group>"; };
 		6DAA4E17259851A9006C963C /* serverPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = serverPickerView.swift; sourceTree = "<group>"; };
 		6DAA4E1A259851B4006C963C /* regionPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = regionPickerView.swift; sourceTree = "<group>"; };
 		6DAA4E1D25985E56006C963C /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -104,6 +110,16 @@
 				B66A119A3D95737223270BB5 /* Pods_XIVLogs.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6DA79F7925AF4D97009B2FF0 /* barChart */ = {
+			isa = PBXGroup;
+			children = (
+				6DA79F7625A89A1B009B2FF0 /* BarChartTest.swift */,
+				6DA79F7A25AF4DB1009B2FF0 /* barChartViewTest.swift */,
+				6DA79F7D25AF4E81009B2FF0 /* BarChartTestViewController.swift */,
+			);
+			path = barChart;
 			sourceTree = "<group>";
 		};
 		6DAA4E1225984D95006C963C /* CustomCells */ = {
@@ -244,6 +260,7 @@
 		6DBAF1CE259370630049AB53 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				6DA79F7925AF4D97009B2FF0 /* barChart */,
 				6DBAF1B1259365E30049AB53 /* TestStrings.swift */,
 				6DBAF1B9259367190049AB53 /* TestViewController.swift */,
 				6DBAF1D12594B8140049AB53 /* ParseTableViewCell.swift */,
@@ -393,8 +410,11 @@
 				6DAA4E2125986CFB006C963C /* zonePickerView.swift in Sources */,
 				6DA79F7425A321A4009B2FF0 /* LogDetailViewController.swift in Sources */,
 				6DBAF1C625936EDB0049AB53 /* CharacterError.swift in Sources */,
+				6DA79F7B25AF4DB1009B2FF0 /* barChartViewTest.swift in Sources */,
+				6DA79F7725A89A1C009B2FF0 /* BarChartTest.swift in Sources */,
 				6DBAF2242596ED8C0049AB53 /* BarGraphViewController.swift in Sources */,
 				6DAA4E1E25985E56006C963C /* UIColorExtension.swift in Sources */,
+				6DA79F7E25AF4E81009B2FF0 /* BarChartTestViewController.swift in Sources */,
 				6DBAF1D22594B8140049AB53 /* ParseTableViewCell.swift in Sources */,
 				6DBAF1F625958A100049AB53 /* StyleGuide.swift in Sources */,
 				6DBAF1A42593624C0049AB53 /* Encounter.swift in Sources */,
